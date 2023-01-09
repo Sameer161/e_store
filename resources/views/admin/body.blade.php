@@ -54,7 +54,7 @@ data-template="vertical-menu-template-free">
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-          <a href="index" class="app-brand-link">
+          <a href="{{ url('index') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
               <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
@@ -114,7 +114,7 @@ data-template="vertical-menu-template-free">
 <ul class="menu-inner py-1">
   <!-- Dashboard -->
   <li class="menu-item @if(url()->current()==url('/index')) active @endif">
-    <a href="index" class="menu-link">
+    <a href="{{ url('index') }}" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
     </a>
@@ -131,12 +131,12 @@ data-template="vertical-menu-template-free">
 
     <ul class="menu-sub">
       <li class="menu-item">
-        <a href="addcategories" class="menu-link">
+        <a href="{{ url('addcategories') }}" class="menu-link">
           <div data-i18n="Without menu">Add Categories</div>
         </a>
       </li>
       <li class="menu-item">
-        <a href="showcategories" class="menu-link">
+        <a href="{{ url('showcategories') }}" class="menu-link">
           <div data-i18n="Without navbar">View Categories</div>
         </a>
       </li>
@@ -150,12 +150,12 @@ data-template="vertical-menu-template-free">
     </a>
     <ul class="menu-sub">
       <li class="menu-item">
-        <a href="addproducts" class="menu-link">
+        <a href="{{ url('addproducts') }}" class="menu-link">
           <div data-i18n="Account">Add Products</div>
         </a>
       </li>
       <li class="menu-item">
-        <a href="viewproducts" class="menu-link">
+        <a href="{{ url('viewproducts') }}" class="menu-link">
           <div data-i18n="Notifications">View Products</div>
         </a>
       </li>

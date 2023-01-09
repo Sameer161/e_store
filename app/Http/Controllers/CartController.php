@@ -28,14 +28,10 @@ class CartController extends Controller
     {
         if($request->isMethod('post')){
             $data=[
-                'name'=>$request->name,
-                'description'=>$request->description,
-                'price'=>$request->price,
-                // 'image'=>$request->image
+                'quantity'=>$request->quantity,
+                'prid'=>$request->prid,
+                'userid'=>auth()->user()->id
             ];
-            // $file=$request->image;
-            // $filename=Storage::putFile('/public/upload',$file);
-            // $data['image']=$filename;
             // dd($data);
             $cartitem=new Cart;
             $cartitem->insert($data);
@@ -61,10 +57,11 @@ class CartController extends Controller
      */
     public function show()
     {
+        // dd(auth()->user()->id);
         $data=[];
-        $data['showcart']=Cart::all();
+        $data['showcart']=Cart::with('prod')->get();
+        // dd($data['showcart']->toArray());
         return view('main.cart',$data);
-        dd('Hello');
     }
 
     /**

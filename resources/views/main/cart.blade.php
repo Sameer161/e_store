@@ -6,8 +6,8 @@
 			<table class="table text-center">
 				<thead>
 					<tr>
+						<th>Image</th>
 						<th>Name</th>
-						<th>Description</th>
 						<th>Quantity</th>
 						<th>Price</th>
 						<th>Action</th>
@@ -15,9 +15,10 @@
 				</thead>
 				<tbody>
 					@foreach($showcart as $item)
+					@if(auth()->user()->id=$item->userid)
 					<tr>
-						<td>{{ $item->name }}</td>
-						<td class="">{{ $item->description }}</td>
+						<td><img src="{{ ('storage/app/'.$item->prod->image) }}" style="max-width: 100px;"></td>
+						<td>{{ $item->prod->name }}</td>
 						<td>
 							<div class="right-content">
 								<div class="quantity buttons_added">
@@ -26,14 +27,17 @@
 								</div>
 							</div>
 						</td>
-						<td>{{ $item->price }}</td>
+						<td>{{ $item->prod->price }}</td>
 						<td><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></td>
 					</tr>
+					@else
+					I don't have any records!
+					@endif()
 					@endforeach()
 				</tbody>
 			</table>
 			<div class="d-flex justify-content-between">
-				<button class="new-button">Continue Shopping</button>
+				<a class="new-button" href="{{ url('/') }}">Continuo Shopping</a>
 				<button class="new-button">Update Cart</button>
 			</div>	
 		</div>
@@ -88,7 +92,7 @@
 <script type="text/javascript">
 
 	var count = 1;
-	var countEl = document.getElementsByClassName("count");
+	var countEl = document.getElementById("count");
 	function plus(){
 		count++;
 		countEl.value = count;

@@ -37,11 +37,9 @@
 					<div class="total">
 						<form method="POST" action="{{ url('/postcart/'.$sinpr->id) }}">
 							@csrf
-							{{-- <input type="hidden" name="quantity" value="1" class="input-text qty text" id="count"> --}}
-							<input type="hidden" name="name" value="{{  $sinpr->name }}">
-							<input type="hidden" name="description" value="{{  $sinpr->description }}">
-							<input type="hidden" name="price" value="{{  $sinpr->price }}">
-							{{-- <input type="hidden" name="image" value="{{ $sinpr->image }}"> --}}
+							<input type="hidden" name="quantity" value="1" id="quantity">
+							<input type="hidden" name="prid" value="{{ $sinpr->id }}">
+							<input type="hidden" name="userid">
 							<button type="submit" class="new-button float-right">Add to Cart</button>
 						</form>
 					</div>
@@ -52,17 +50,19 @@
 	<script type="text/javascript">
 		
 		var count = 1;
-		var countEl = document.getElementsByClassName("count");
+		var countEl = document.getElementById("count");
 		function plus(){
 			count++;
 			countEl.value = count;
 			console.log(count);
+			document.getElementById("quantity").value=count;
 		}
 		function minus(){
 			if (count > 1) {
 				count--;
 				countEl.value = count;
 			}  
+			document.getElementById("quantity").value=count;
 		}
 	</script>
 </section>

@@ -57,7 +57,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="#" class="logo">
+                        <a href="{{ url('/') }}" class="logo">
                             <img src="{{ asset('assets/images/logo.png') }}">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -86,7 +86,7 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                            <li class="scroll-to-section"><a href="cartitem"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li class="scroll-to-section"><a href="{{ url('cartitem') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

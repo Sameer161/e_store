@@ -73,8 +73,12 @@ class ProductController extends Controller
     }
     public function view(Product $product)
     {
-        $showpr=Product::all();
-        return view('main.index',compact('showpr'));
+        $data=[];
+        $data['catemen']=Categories::where('id','1')->get();
+        $data['catewomen']=Categories::where('id','2')->get();
+        $data['showpr']=Product::where('cateid','1')->get();
+        $data['showwo']=Product::where('cateid','2')->get();
+        return view('main.index',$data);
     }
 
     /**
