@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Auth;
 use Storage;
 class CartController extends Controller
 {
@@ -69,9 +70,15 @@ class CartController extends Controller
      */
     public function show()
     {
-        $data=[];
-        $data['showcart']=Cart::with('prod')->where('userid',auth()->user()->id)->get();
-        return view('main.cart',$data);
+        if(Auth::check())
+        {
+            $data=[];
+            $data['showcart']=Cart::with('prod')->where('userid',auth()->user()->id)->get();
+            return view('main.cart',$data);
+        }
+        else{
+            
+        }
     }
 
     /**
