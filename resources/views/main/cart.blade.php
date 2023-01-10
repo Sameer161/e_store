@@ -22,8 +22,7 @@
 						<td>
 							<div class="right-content">
 								<div class="quantity buttons_added">
-									<input type="button" value="-" class="minus" id="moins" onclick="minus()"><input type="number" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus" id="plus"
-									onclick="plus()">
+									<input type="button" value="-" class="minus"><input type="text" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus">
 								</div>
 							</div>
 						</td>
@@ -89,20 +88,29 @@
 		vertical-align: middle !important;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript">
-	document.write=(document.getElementById('count'));
-	var count = ;
-	var countEl = document.getElementById("count");
-	function plus(){
-		count++;
-		countEl.value = count;
-		console.log(count);
-	}
-	function minus(){
-		if (count > 1) {
-			count--;
-			countEl.value = count;
-		}  
-	}
+	$(document).ready(function(){
+		$(".plus").click(function()
+		{
+			var currentVal = parseInt($(this).prev(".qty").val());
+			if (currentVal != NaN)
+			{
+				$(this).prev(".qty").val(currentVal + 1);
+			}
+		});
+
+		$(".minus").click(function()
+		{
+			var currentVal = parseInt($(this).next(".qty").val());
+			if (currentVal != NaN)
+			{
+				if(currentVal > 0){
+					$(this).next(".qty").val(currentVal - 1);
+				}
+
+			}
+		});
+	});
 </script>
 @endsection()
