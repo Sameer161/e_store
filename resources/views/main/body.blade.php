@@ -34,7 +34,10 @@
         .new-button:focus{
             outline: none !important;
         }
-  </style>
+        a:hover {
+            color: #000;
+        }
+    </style>
 </head>
 
 <body>
@@ -86,7 +89,7 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                            <li class="scroll-to-section"><a href="{{ url('cartitem') }}"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                            <li class="scroll-to-section position-relative"><a href="{{ url('cartitem') }}"><i class="fa-solid fa-cart-shopping"></i></a><span class="position-absolute badge badge-pill badge-dark" style="top: -5px;right: -10px;">0</span></li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -98,7 +101,7 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
-
+    @include('main.message')
     @yield('content')
     <!-- ***** Footer Start ***** -->
     <footer>

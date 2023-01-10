@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Http\Request;
+use App\Models\Product;
 use Storage;
 class CartController extends Controller
 {
@@ -26,15 +27,26 @@ class CartController extends Controller
      */
     public function create(Request $request,$id)
     {
-        if($request->isMethod('post')){
-            $data=[
-                'quantity'=>$request->quantity,
-                'prid'=>$request->prid,
-                'userid'=>auth()->user()->id
-            ];
-            // dd($data);
-            $cartitem=new Cart;
-            $cartitem->insert($data);
+        $product_id = $request->input('prid');
+        $product_qty = $request->input('quantity');
+        $prod_check = Product::where('id', $product_id)->first();
+
+        if (Cart::where('prid', $product_id)->where('userid', auth()->user()->id)->exists()) {
+            return back()->with('warning',$prod_check->name.' Already Added To Cart');
+        }
+        else{
+
+            if($request->isMethod('post')){
+                $data=[
+                    'quantity'=>$request->quantity,
+                    'prid'=>$request->prid,
+                    'userid'=>auth()->user()->id
+                ];
+                $cartitem=new Cart;
+                $cartitem->insert($data);
+                return redirect()->back();
+
+            }
         }
     }
 
@@ -93,8 +105,10 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy($id)
     {
-        //
+        $cartit=Cart::find($id);
+        $cartit->delete();
+        return redirect('cartitem');
     }
 }

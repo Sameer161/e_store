@@ -46,3 +46,4 @@ Route::get('/singleproduct/{id}',[App\Http\Controllers\ProductController::class,
 // Cart
 Route::post('/postcart/{id}',[App\Http\Controllers\CartController::class,'create']);
 Route::get('/cartitem',[App\Http\Controllers\CartController::class,'show']);
+Route::get('delal/{id}',[App\Http\Controllers\CartController::class,'destroy']);

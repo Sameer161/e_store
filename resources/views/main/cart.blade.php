@@ -22,13 +22,13 @@
 						<td>
 							<div class="right-content">
 								<div class="quantity buttons_added">
-									<input type="button" value="-" class="minus" id="moins" onclick="minus()"><input type="number" name="quantity" value="1" class="input-text qty text" id="count"><input type="button" value="+" class="plus" id="plus"
+									<input type="button" value="-" class="minus" id="moins" onclick="minus()"><input type="number" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus" id="plus"
 									onclick="plus()">
 								</div>
 							</div>
 						</td>
-						<td>{{ $item->prod->price }}</td>
-						<td><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></td>
+						<td>{{ $item->prod->price*$item->quantity }}</td>
+						<td><a href="{{ url('delal/'.$item->id) }}"><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></a></td>
 					</tr>
 					@else
 					I don't have any records!
@@ -90,8 +90,8 @@
 	}
 </style>
 <script type="text/javascript">
-
-	var count = 1;
+	document.write=(document.getElementById('count'));
+	var count = ;
 	var countEl = document.getElementById("count");
 	function plus(){
 		count++;

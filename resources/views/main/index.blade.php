@@ -1,5 +1,6 @@
 @extends('main.body')
 @section('content')
+
 <section class="section" id="men">
     <div class="container">
         <div class="row">
