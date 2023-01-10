@@ -69,10 +69,8 @@ class CartController extends Controller
      */
     public function show()
     {
-        // dd(auth()->user()->id);
         $data=[];
-        $data['showcart']=Cart::with('prod')->get();
-        // dd($data['showcart']->toArray());
+        $data['showcart']=Cart::with('prod')->where('userid',auth()->user()->id)->get();
         return view('main.cart',$data);
     }
 

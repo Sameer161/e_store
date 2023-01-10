@@ -15,7 +15,7 @@
 				</thead>
 				<tbody>
 					@foreach($showcart as $item)
-					@if(auth()->user()->id=$item->userid)
+					{{-- @if(auth()->user()->id=$item->userid) --}}
 					<tr>
 						<td><img src="{{ ('storage/app/'.$item->prod->image) }}" style="max-width: 100px;"></td>
 						<td>{{ $item->prod->name }}</td>
@@ -29,9 +29,8 @@
 						<td>{{ $item->prod->price*$item->quantity }}</td>
 						<td><a href="{{ url('delal/'.$item->id) }}"><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></a></td>
 					</tr>
-					@else
-					I don't have any records!
-					@endif()
+					{{-- @else --}}
+					{{-- @endif() --}}
 					@endforeach()
 				</tbody>
 			</table>
