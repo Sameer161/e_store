@@ -77,7 +77,7 @@ class CartController extends Controller
             return view('main.cart',$data);
         }
         else{
-            
+            return redirect('/');
         }
     }
 
@@ -87,9 +87,9 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cart $cart)
+    public function edit()
     {
-        //
+        dd('Hello');
     }
 
     /**

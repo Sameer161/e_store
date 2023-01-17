@@ -22,11 +22,11 @@
 						<td>
 							<div class="right-content">
 								<div class="quantity buttons_added">
-									<input type="button" value="-" class="minus"><input type="text" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus">
+									<input type="button" value="-" class="minus"><input type="text" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus"><input type="hidden" class="baseprice" value="{{ $item->prod->price }}">
 								</div>
 							</div>
 						</td>
-						<td>{{ $item->prod->price*$item->quantity }}</td>
+						<td class="newprice">{{ $item->prod->price*$item->quantity }}</td>
 						<td><a href="{{ url('delal/'.$item->id) }}"><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></a></td>
 					</tr>
 					{{-- @else --}}
@@ -36,7 +36,11 @@
 			</table>
 			<div class="d-flex justify-content-between">
 				<a class="new-button" href="{{ url('/') }}">Continuo Shopping</a>
-				<button class="new-button">Update Cart</button>
+				<form method="POST" action="{{ url('updatecart') }}">
+
+
+					<button class="new-button" type="submitt">Update Cart</button>
+				</form>
 			</div>	
 		</div>
 	</div>
@@ -97,6 +101,10 @@
 			{
 				$(this).prev(".qty").val(currentVal + 1);
 			}
+			var newqty=currentVal + 1;
+			var pri=$(this).next('.baseprice').val();
+			var newprice=newqty*pri;
+			$(this).parents('td').next().text(newprice);
 		});
 
 		$(".minus").click(function()
