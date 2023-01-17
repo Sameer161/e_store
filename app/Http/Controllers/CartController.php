@@ -89,11 +89,20 @@ class CartController extends Controller
      */
     public function edit(Request $request)
     {
-       $data=[
-        'quantity'=>$request->quantity
-       ];
-       dd($data);
- }
+     $data=$request->all();
+       // dd($data);
+     unset($data['_token']);
+     foreach ($data['cart'] as $key => $value) {
+
+        $updacart=Cart::find($key);
+         $data=[
+            'quantity'=>$value['quantity']
+        ];
+        // dd($data);
+        $updacart->update($data);
+        return redirect('/cartitem');
+    }
+}
 
     /**
      * Update the specified resource in storage.

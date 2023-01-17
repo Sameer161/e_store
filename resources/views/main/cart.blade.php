@@ -23,7 +23,7 @@
 							<td>
 								<div class="right-content">
 									<div class="quantity buttons_added">
-										<input type="button" value="-" class="minus"><input type="text" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus"><input type="hidden" class="baseprice" value="{{ $item->prod->price }}">
+										<input type="button" value="-" class="minus"><input type="text" name="cart[{{ $item->id }}][quantity]" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus"><input type="hidden" class="baseprice" value="{{ $item->prod->price }}">
 									</div>
 								</div>
 							</td>
