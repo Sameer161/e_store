@@ -87,10 +87,13 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Request $request)
     {
-        dd('Hello');
-    }
+       $data=[
+        'quantity'=>$request->quantity
+       ];
+       dd($data);
+ }
 
     /**
      * Update the specified resource in storage.

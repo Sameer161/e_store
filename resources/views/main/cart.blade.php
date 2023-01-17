@@ -3,45 +3,41 @@
 <div class="container" style="margin-top: 162px;margin-bottom: 81px;">
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table text-center">
-				<thead>
-					<tr>
-						<th>Image</th>
-						<th>Name</th>
-						<th>Quantity</th>
-						<th>Price</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($showcart as $item)
-					{{-- @if(auth()->user()->id=$item->userid) --}}
-					<tr>
-						<td><img src="{{ ('storage/app/'.$item->prod->image) }}" style="max-width: 100px;"></td>
-						<td>{{ $item->prod->name }}</td>
-						<td>
-							<div class="right-content">
-								<div class="quantity buttons_added">
-									<input type="button" value="-" class="minus"><input type="text" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus"><input type="hidden" class="baseprice" value="{{ $item->prod->price }}">
+			<form method="POST" action="{{ url('updatecart') }}">
+				@csrf
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th>Image</th>
+							<th>Name</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($showcart as $item)
+						<tr>
+							<td><img src="{{ ('storage/app/'.$item->prod->image) }}" style="max-width: 100px;"></td>
+							<td>{{ $item->prod->name }}</td>
+							<td>
+								<div class="right-content">
+									<div class="quantity buttons_added">
+										<input type="button" value="-" class="minus"><input type="text" name="quantity" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus"><input type="hidden" class="baseprice" value="{{ $item->prod->price }}">
+									</div>
 								</div>
-							</div>
-						</td>
-						<td class="newprice">{{ $item->prod->price*$item->quantity }}</td>
-						<td><a href="{{ url('delal/'.$item->id) }}"><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></a></td>
-					</tr>
-					{{-- @else --}}
-					{{-- @endif() --}}
-					@endforeach()
-				</tbody>
-			</table>
-			<div class="d-flex justify-content-between">
-				<a class="new-button" href="{{ url('/') }}">Continuo Shopping</a>
-				<form method="POST" action="{{ url('updatecart') }}">
-
-
+							</td>
+							<td class="newprice">{{ $item->prod->price*$item->quantity }}</td>
+							<td><a href="{{ url('delal/'.$item->id) }}"><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></a></td>
+						</tr>
+						@endforeach()
+					</tbody>
+				</table>
+				<div class="d-flex justify-content-between">
+					<a class="new-button" href="{{ url('/') }}">Continuo Shopping</a>
 					<button class="new-button" type="submitt">Update Cart</button>
-				</form>
-			</div>	
+				</div>	
+			</form>
 		</div>
 	</div>
 	<div class="subscribe">
@@ -101,7 +97,9 @@
 			{
 				$(this).prev(".qty").val(currentVal + 1);
 			}
+			
 			var newqty=currentVal + 1;
+			// $(this).('#newquan').val(newq ty);
 			var pri=$(this).next('.baseprice').val();
 			var newprice=newqty*pri;
 			$(this).parents('td').next().text(newprice);
@@ -115,7 +113,11 @@
 				if(currentVal > 0){
 					$(this).next(".qty").val(currentVal - 1);
 				}
-
+				var newqty=currentVal - 1;
+				console.log(currentVal - 1);
+				var pri=$(this).nextAll('.baseprice').val();
+				var newprice=newqty*pri;
+				$(this).parents('td').next().text(newprice);
 			}
 		});
 	});
