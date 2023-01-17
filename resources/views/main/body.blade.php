@@ -37,6 +37,19 @@
         a:hover {
             color: #000;
         }
+        .subscribe input{
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+            padding: 0px 15px;
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 500;
+            color: #aaa;
+            border-radius: 0px;
+            border: 1px solid #7a7a7a;
+            box-shadow: none;
+        }
     </style>
 </head>
 

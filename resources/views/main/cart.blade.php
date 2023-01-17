@@ -72,7 +72,7 @@
 						<span class="h6">Subtotal</span>
 						<p>$53</p>
 					</div>
-					<button class="new-button w-100">Proceed to Checkout</button>
+					<a href="{{ url('/checkout') }}" class="new-button w-100">Proceed to Checkout</a>
 				</div>
 			</div>
 		</div>
