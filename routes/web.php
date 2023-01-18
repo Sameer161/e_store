@@ -51,3 +51,8 @@ Route::post('/updatecart',[App\Http\Controllers\CartController::class,'edit']);
 Route::get('/checkout',[App\Http\Controllers\CartController::class,'store']);
 //Order
 Route::post('/order',[App\Http\Controllers\OrderController::class,'create']);
+
+//Stripe
+
+Route::get('stripe', [App\Http\Controllers\StripePaymentController::class, 'stripe']);
+Route::post('stripe', [App\Http\Controllers\StripePaymentController::class, 'stripePost'])->name('stripe.post');
