@@ -1,24 +1,101 @@
 @extends('main.body')
 @section('content')
+<style type="text/css">
+	.subscribe{
+		margin-top: 0px;
+	}
+</style>
 <div class="container">
-	<div class="row">
+	<div class="row" style="margin: 142px 0px 60px 0px;">
 		<div class="col-md-7">
-			<form>
-				<div class="row justify-content-between subscribe">
-					<input class="col-md-5" type="name" name="name" placeholder="Enter Name">
-					<input class="col-md-5" type="email" name="email" placeholder="Enter Email">
+			<form method="POST" action="{{ url('/order') }}">
+				@csrf
+				<div class="bg-dark text-white py-3 px-4">Delivery Option</div>
+				<div class="mb-3"style="border: 1px solid #7a7a7a;padding: 20px;">
+					<div class="row justify-content-between subscribe mb-3">
+						<div class="col-md-6">
+							<input class="" type="text" name="name" placeholder="Enter Name">
+						</div>
+						<div class="col-md-6">
+							<input class="" type="number" name="phone" placeholder="Enter Phone Number">
+						</div>
+					</div>
+					<div class="row subscribe mb-3">
+						<div class="col-md-12">
+							<input class="" type="email" name="email" placeholder="Enter Email">
+						</div>
+					</div>
+					<div class="row subscribe mb-3">
+						<div class="col-md-12">
+							<input class="" type="text" name="adress" placeholder="Enter Address">
+						</div>
+					</div>
+					<div class="row justify-content-between subscribe mb-3">
+						<div class="col-md-6">
+							<input class="" type="text" name="city" placeholder="Enter City">
+						</div>
+						<div class="col-md-6">
+							<input class="" type="number" name="postal" placeholder="Enter Postal Code">
+						</div>
+					</div>
+
 				</div>
-				<div class="row justify-content-between subscribe">
-					<input class="col-md-5" type="name" name="name" placeholder="Enter Name">
-					<input class="col-md-5" type="email" name="email" placeholder="Enter Email">
-				</div>
-				<div class="row justify-content-between subscribe">
-					<input class="col-md-5" type="name" name="name" placeholder="Enter Name">
-					<input class="col-md-5" type="email" name="email" placeholder="Enter Email">
+				<div class="bg-dark text-white py-3 px-4">Payment</div>
+				<div style="border: 1px solid #7a7a7a;padding: 20px;">
+					<div class="form-check mb-2">
+						<input class="form-check-input" type="radio" name="payment" id="" value="delivery">
+						<label class="form-check-label" for="exampleRadios1">
+							Cash On Delivery
+						</label>
+					</div>
+					<div class="form-check mb-2">
+						<input class="form-check-input" type="radio" name="payment" id="" value="card">
+						<label class="form-check-label" for="exampleRadios2">
+							Credit or Debit Card
+						</label>
+					</div>
+					<div class="text-right">
+						<button type="submit" class="new-button" style="border:1px solid #7a7a7a;">Place Order</button>
+					</div>
 				</div>
 			</form>
 		</div>
-		<div class="col-md-5"></div>
+		<div class="col-md-5">
+			<div class="bg-secondary text-white py-3 px-4">In Your Bag</div>
+			<div class="border border-secondary">
+				<div class="row mx-0">
+					<div class="col-md-6">
+						<span>Subtotal</span>
+					</div>
+					<div class="col-md-6 text-right">
+						<span class="h6">540 </span>
+					</div>
+					<div class="col-md-6">
+						<span>Shipment Fee</span>
+					</div>
+					<div class="col-md-6 text-right">
+						<span class="h6">50</span>
+					</div>
+					<div class="col-md-6">
+						<span>Grand Total</span>
+					</div>
+					<div class="col-md-6 text-right">
+						<span class="h6">590</span>
+					</div>
+				</div>
+				@foreach($cart as $chkout)
+				<div class="row mb-3 mx-0">
+					<div class="col-md-3">
+						<img src="{{ ('storage/app/'.$chkout->prod->image) }}" style="max-width: 100%;">
+					</div>
+					<div class="col-md-9">
+						<h5>{{ $chkout->prod->name }}</h5>
+						<p>{{ $chkout->prod->description }}</p>
+					</div>
+				</div>
+				@endforeach
+			</div>
+		</div>
 	</div>
 </div>
 @endsection()

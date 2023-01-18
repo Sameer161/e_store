@@ -48,4 +48,6 @@ Route::post('/postcart/{id}',[App\Http\Controllers\CartController::class,'create
 Route::get('/cartitem',[App\Http\Controllers\CartController::class,'show']);
 Route::get('/delal/{id}',[App\Http\Controllers\CartController::class,'destroy']);
 Route::post('/updatecart',[App\Http\Controllers\CartController::class,'edit']);
-Route::view('/checkout','main.checkout');
+Route::get('/checkout',[App\Http\Controllers\CartController::class,'store']);
+//Order
+Route::post('/order',[App\Http\Controllers\OrderController::class,'create']);

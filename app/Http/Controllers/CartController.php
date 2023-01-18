@@ -46,7 +46,6 @@ class CartController extends Controller
                 $cartitem=new Cart;
                 $cartitem->insert($data);
                 return redirect()->back();
-
             }
         }
     }
@@ -57,9 +56,11 @@ class CartController extends Controller
      * @param  \App\Http\Requests\StoreCartRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCartRequest $request)
+    public function store()
     {
-        //
+        $data=[];
+        $data['cart']=Cart::with('prod')->get();
+        return view('main.checkout',$data);
     }
 
     /**
@@ -90,7 +91,6 @@ class CartController extends Controller
     public function edit(Request $request)
     {
      $data=$request->all();
-       // dd($data);
      unset($data['_token']);
      foreach ($data['cart'] as $key => $value) {
 
@@ -98,10 +98,9 @@ class CartController extends Controller
          $data=[
             'quantity'=>$value['quantity']
         ];
-        // dd($data);
         $updacart->update($data);
-        return redirect('/cartitem');
     }
+        return redirect('/cartitem');
 }
 
     /**
