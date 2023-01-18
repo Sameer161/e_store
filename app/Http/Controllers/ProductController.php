@@ -108,7 +108,7 @@ class ProductController extends Controller
             $data=[
                 'name'=>$request->name,
                 'description'=>$request->description,
-                'quantity'=>$request->quantity,
+                'stock'=>$request->stock,
                 'price'=>$request->price,
                 'cateid'=>$request->cate_id                
             ];

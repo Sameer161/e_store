@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Auth::routes();
-Route::view('/design','main.design');
+Route::view('/out','main.home');
 Route::get('/',[App\Http\Controllers\ProductController::class,'view']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::view('/index','admin.index');
