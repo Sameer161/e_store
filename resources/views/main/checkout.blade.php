@@ -63,23 +63,23 @@
 		<div class="col-md-5">
 			<div class="bg-secondary text-white py-3 px-4">In Your Bag</div>
 			<div class="border border-secondary">
-				<div class="row mx-0">
-					<div class="col-md-6">
+				<div class="row mx-0 border-bottom border-secondary mb-3 pt-3">
+					<div class="col-md-6 pb-3">
 						<span>Subtotal</span>
 					</div>
-					<div class="col-md-6 text-right">
+					<div class="col-md-6 text-right pb-3">
 						<span class="h6">540 </span>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 pb-3">
 						<span>Shipment Fee</span>
 					</div>
-					<div class="col-md-6 text-right">
+					<div class="col-md-6 text-right pb-3">
 						<span class="h6">50</span>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 pb-3">
 						<span>Grand Total</span>
 					</div>
-					<div class="col-md-6 text-right">
+					<div class="col-md-6 text-right pb-3">
 						<span class="h6">590</span>
 					</div>
 				</div>

@@ -37,6 +37,7 @@
 					<div class="total">
 						<form method="POST" action="{{ url('/postcart/'.$sinpr->id) }}">
 							@csrf
+							<input type="hidden" name="price" value="{{ $sinpr->price }}">
 							<input type="hidden" name="quantity" value="1" id="quantity">
 							<input type="hidden" name="prid" value="{{ $sinpr->id }}">
 							<input type="hidden" name="userid">

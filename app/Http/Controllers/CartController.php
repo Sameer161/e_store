@@ -28,6 +28,7 @@ class CartController extends Controller
      */
     public function create(Request $request,$id)
     {
+        // dd($request->price);
         $product_id = $request->input('prid');
         $product_qty = $request->input('quantity');
         $prod_check = Product::where('id', $product_id)->first();
@@ -76,6 +77,7 @@ class CartController extends Controller
             $data=[];
             $data['showcart']=Cart::with('prod')->where('userid',auth()->user()->id)->get();
             return view('main.cart',$data);
+            // $data['sumcart']=Cart::with('prod')->where('userid',auth()->user()->id)->sum();
         }
         else{
             return redirect('/');

@@ -199,9 +199,11 @@
 
         <!-- Global Init -->
         <script src="{{ asset('assets/js/custom.js') }}"></script>
-
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
-
+            $(function() {
+                setTimeout(function() { $("#newpreloader").fadeOut(1500); }, 5000)
+            })
             $(function() {
                 var selectedClass = "";
                 $("p").click(function(){
