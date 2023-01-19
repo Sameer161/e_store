@@ -29,21 +29,25 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        
         $data=[
             'name'=>$request->name,
+            'userid'=>auth()->user()->id,
+            'prid'=>$request->prid,
             'phone'=>$request->phone,
             'adress'=>$request->adress,
             'email'=>$request->email,
             'city'=>$request->city,
-            'postal'=>$request->postal
+            'postal'=>$request->postal,
+            'total'=>560,
+            'invoice'=>random_int(100000, 999999)
         ];
         // dd($data);
         $order=new Order;
         $order->insert($data);
         $del=DB::table('carts');
         $del->delete();
-        return view('main.comp');
+        
+        return view('main.comp',$data);
     }
 
     /**

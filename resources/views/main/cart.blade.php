@@ -17,6 +17,7 @@
 					</thead>
 					<tbody>
 						@foreach($showcart as $item)
+						{{-- @dd($item->prid) --}}
 						<tr>
 							<td><img src="{{ ('storage/app/'.$item->prod->image) }}" style="max-width: 100px;"></td>
 							<td>{{ $item->prod->name }}</td>
@@ -27,7 +28,7 @@
 									</div>
 								</div>
 							</td>
-							<td class="newprice">{{ $item->prod->price*$item->quantity }}</td>
+							<td name="nprice" class="newprice">{{ $item->prod->price*$item->quantity }}</td>
 							<td><a href="{{ url('delal/'.$item->id) }}"><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></a></td>
 						</tr>
 						@endforeach()

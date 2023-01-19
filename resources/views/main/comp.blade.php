@@ -78,6 +78,11 @@
 <div id="newpreloader">
 	<div id="newloader"></div>
 </div>
-
-
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8">
+			
+		</div>
+	</div>
+</div>
 @endsection()

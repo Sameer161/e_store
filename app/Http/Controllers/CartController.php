@@ -28,7 +28,7 @@ class CartController extends Controller
      */
     public function create(Request $request,$id)
     {
-        // dd($request->price);
+
         $product_id = $request->input('prid');
         $product_qty = $request->input('quantity');
         $prod_check = Product::where('id', $product_id)->first();
@@ -41,15 +41,17 @@ class CartController extends Controller
             if($request->isMethod('post')){
                 $data=[
                     'quantity'=>$request->quantity,
+                    'price'=>$request->price*$request->quantity,
                     'prid'=>$request->prid,
                     'userid'=>auth()->user()->id
                 ];
+                // dd($data);
                 $cartitem=new Cart;
                 $cartitem->insert($data);
                 return redirect()->back();
             }
         }
-    }
+}
 
     /**
      * Store a newly created resource in storage.
@@ -92,17 +94,18 @@ class CartController extends Controller
      */
     public function edit(Request $request)
     {
-     $data=$request->all();
-     unset($data['_token']);
-     foreach ($data['cart'] as $key => $value) {
+       $data=$request->all();
+       unset($data['_token']);
+       foreach ($data['cart'] as $key => $value) {
 
         $updacart=Cart::find($key);
-         $data=[
-            'quantity'=>$value['quantity']
+        $data=[
+            'quantity'=>$value['quantity'],
         ];
+        // dd($data);
         $updacart->update($data);
     }
-        return redirect('/cartitem');
+    return redirect('/cartitem');
 }
 
     /**
