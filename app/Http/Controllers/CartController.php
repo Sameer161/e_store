@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Auth;
 use Storage;
+use DB;
 class CartController extends Controller
 {
     /**
@@ -28,7 +29,6 @@ class CartController extends Controller
      */
     public function create(Request $request,$id)
     {
-
         $product_id = $request->input('prid');
         $product_qty = $request->input('quantity');
         $prod_check = Product::where('id', $product_id)->first();
@@ -51,7 +51,7 @@ class CartController extends Controller
                 return redirect()->back();
             }
         }
-}
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -94,9 +94,9 @@ class CartController extends Controller
      */
     public function edit(Request $request)
     {
-       $data=$request->all();
-       unset($data['_token']);
-       foreach ($data['cart'] as $key => $value) {
+     $data=$request->all();
+     unset($data['_token']);
+     foreach ($data['cart'] as $key => $value) {
 
         $updacart=Cart::find($key);
         $data=[
@@ -115,9 +115,12 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCartRequest $request, Cart $cart)
+    public function update()
     {
-        //
+        $data=[];
+        $data['cartquantity']=Cart::where('userid',auth()->user()->id)->get()->sum('quantity');
+        dd($data);
+        return view('main.body',$data);
     }
 
     /**

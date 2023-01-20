@@ -27,7 +27,8 @@ class HomeController extends Controller
             return view("admin.index");
         }
         elseif(auth()->user()->role=="2"){
-            return redirect()->back();
+            return redirect('/');
+            // return redirect()->back();
         }
     }
 }

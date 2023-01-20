@@ -271,6 +271,10 @@
               </button>
             </div>
           </div>
+          <p class="signup">
+            Don't have an account ?
+            <a href="#" onclick="toggleForm();">Sign Up.</a>
+          </p>
         </form>
       </div>
       <div class="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg" alt="" /></div>

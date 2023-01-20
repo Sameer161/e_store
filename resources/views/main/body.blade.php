@@ -102,7 +102,17 @@
                                 </ul>
                             </li>
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
-                            <li class="scroll-to-section position-relative"><a href="{{ url('cartitem') }}"><i class="fa-solid fa-cart-shopping"></i></a><span class="position-absolute badge badge-pill badge-dark" style="top: -5px;right: -10px;">0</span></li>
+                            @if(!Auth::check())
+                            <li class="scroll-to-section"><a href="{{ url('userlogin') }}">Login/Regiter</a></li>
+                            @endif()
+                            <li class="scroll-to-section position-relative">
+                                <a href="{{ url('cartitem') }}">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </a>
+                                {{-- @foreach($cart) --}}
+                                <span class="position-absolute badge badge-pill badge-dark" style="top: -5px;right: -10px;">0</span>
+                                {{-- @endforeach() --}}
+                            </li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
