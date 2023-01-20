@@ -60,4 +60,6 @@ Route::post('stripe', [App\Http\Controllers\StripePaymentController::class, 'str
 Route::view('/userlogin','admin.user.login');
 
 //Cart Logo
-Route::get('/cartquan',[App\Http\Controllers\CartController::class,'update']);
+// Route::get('/cartquan',[App\Http\Controllers\CartController::class,'update']);
+Route::get('helper2', [App\Http\Controllers\CartController::class,'update']);
+Route::get('custom-helper', [App\Http\Controllers\CartController::class,'update']);

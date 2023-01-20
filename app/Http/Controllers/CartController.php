@@ -117,11 +117,17 @@ class CartController extends Controller
      */
     public function update()
     {
-        $data=[];
-        $data['cartquantity']=Cart::where('userid',auth()->user()->id)->get()->sum('quantity');
-        dd($data);
-        return view('main.body',$data);
-    }
+        // $data=[];
+        // $data['cartquantity']=Cart::where('userid',auth()->user()->id)->get()->sum('quantity');
+        // dd($data);
+        // return view('main.body',$data);
+        // $newDateFormat = changeDateFormate(date('Y-m-d'),'m/d/Y');
+        // dd($newDateFormat);
+
+        return view('main.body');
+
+    });
+}
 
     /**
      * Remove the specified resource from storage.

@@ -122,6 +122,7 @@
                 </div>
             </div>
         </div>
+         <p>Today Date : {{ $any = changeDateFormate() }}</p>
     </header>
     <!-- ***** Header Area End ***** -->
     @include('main.message')
