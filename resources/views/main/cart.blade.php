@@ -71,7 +71,7 @@
 					<h5 class="mb-3">Cart Total</h5>
 					<div class="d-flex justify-content-between mb-3">
 						<span class="h6">Subtotal</span>
-						<p>$53</p>
+						<p>${{ totalprice() }}</p>
 					</div>
 					<a href="{{ url('/checkout') }}" class="new-button w-100">Proceed to Checkout</a>
 				</div>

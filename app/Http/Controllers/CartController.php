@@ -94,15 +94,15 @@ class CartController extends Controller
      */
     public function edit(Request $request)
     {
-     $data=$request->all();
-     unset($data['_token']);
-     foreach ($data['cart'] as $key => $value) {
+       $data=$request->all();
+        // dd($data);
+       unset($data['_token']);
+       foreach ($data['cart'] as $key => $value) {
 
         $updacart=Cart::find($key);
         $data=[
-            'quantity'=>$value['quantity'],
+            'quantity'=>$value['quantity']
         ];
-        // dd($data);
         $updacart->update($data);
     }
     return redirect('/cartitem');
@@ -124,10 +124,10 @@ class CartController extends Controller
         // $newDateFormat = changeDateFormate(date('Y-m-d'),'m/d/Y');
         // dd($newDateFormat);
 
-        return view('main.body');
+        // return view('main.body');
 
-    });
-}
+    // });
+    }
 
     /**
      * Remove the specified resource from storage.

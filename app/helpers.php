@@ -1,5 +1,11 @@
 <?php
-  
+use App\Models\Cart;
 function changeDateFormate(){
-    return ('hello');    
+   $data=Cart::where('userid',auth()->user()->id)->get()->sum('quantity');
+   return ($data);    
+}
+
+function totalprice(){
+   $toprice=Cart::get()->sum('price');
+   return ($toprice);
 }

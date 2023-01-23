@@ -108,9 +108,10 @@
                             <li class="scroll-to-section position-relative">
                                 <a href="{{ url('cartitem') }}">
                                     <i class="fa-solid fa-cart-shopping"></i>
+                                    {{-- Cart --}}
                                 </a>
                                 {{-- @foreach($cart) --}}
-                                <span class="position-absolute badge badge-pill badge-dark" style="top: -5px;right: -10px;">0</span>
+                                <span class="position-absolute badge badge-pill badge-dark" style="top: -5px;right: -10px;">{{ $any = changeDateFormate() }}</span>
                                 {{-- @endforeach() --}}
                             </li>
                         </ul>        
@@ -122,7 +123,7 @@
                 </div>
             </div>
         </div>
-         <p>Today Date : {{ $any = changeDateFormate() }}</p>
+         {{-- <p>Today Date : {{ $any = changeDateFormate() }}</p> --}}
     </header>
     <!-- ***** Header Area End ***** -->
     @include('main.message')

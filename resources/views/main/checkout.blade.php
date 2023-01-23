@@ -67,7 +67,7 @@
 							<span>Subtotal</span>
 						</div>
 						<div class="col-md-6 text-right pb-3">
-							<span class="h6">540 </span>
+							<span class="h6">${{ totalprice() }}</span>
 						</div>
 						<div class="col-md-6 pb-3">
 							<span>Shipment Fee</span>
