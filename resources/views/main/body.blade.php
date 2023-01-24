@@ -123,7 +123,7 @@
                 </div>
             </div>
         </div>
-         {{-- <p>Today Date : {{ $any = changeDateFormate() }}</p> --}}
+        {{-- <p>Today Date : {{ $any = changeDateFormate() }}</p> --}}
     </header>
     <!-- ***** Header Area End ***** -->
     @include('main.message')
@@ -214,7 +214,10 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
             $(function() {
-                setTimeout(function() { $("#newpreloader").fadeOut(1500); }, 5000)
+                setTimeout(function() {
+                 $("#newpreloader").fadeOut(1500);
+                 $(".new-block").fadeIn(3000);
+                  }, 5000)
             })
             $(function() {
                 var selectedClass = "";

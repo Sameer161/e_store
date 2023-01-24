@@ -38,7 +38,7 @@
 							<input class="" type="number" name="postal" placeholder="Enter Postal Code" required>
 						</div>
 					</div>
-
+					<input type="hidden" name="sutotal" value="${{ totalprice() }}">
 				</div>
 				<div class="bg-dark text-white py-3 px-4">Payment</div>
 				<div style="border: 1px solid #7a7a7a;padding: 20px;">
@@ -73,13 +73,13 @@
 							<span>Shipment Fee</span>
 						</div>
 						<div class="col-md-6 text-right pb-3">
-							<span class="h6">50</span>
+							<span class="h6">$7</span>
 						</div>
 						<div class="col-md-6 pb-3">
 							<span>Grand Total</span>
 						</div>
 						<div class="col-md-6 text-right pb-3">
-							<span class="h6">590</span>
+							<span class="h6">${{ totalprice()+7 }}</span>
 						</div>
 					</div>
 					@foreach($cart as $chkout)
@@ -95,6 +95,7 @@
 					</div>
 					<input type="hidden" name="userid" value="{{ $chkout->userid }}">
 					<input type="hidden" name="prid" value="{{ $chkout->prid }}">
+					<input type="hidden" name="">
 					@endforeach
 				</div>
 			</div>

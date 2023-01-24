@@ -165,19 +165,19 @@ data-template="vertical-menu-template-free">
   <li class="menu-item">
     <a href="javascript:void(0)" class="menu-link menu-toggle">
       <i class="menu-icon tf-icons bx bx-box"></i>
-      <div data-i18n="User interface">Order</div>
+      <div data-i18n="User interface">Orders</div>
     </a>
     <ul class="menu-sub">
       <li class="menu-item">
-        <a href="ui-accordion.html" class="menu-link">
-          <div data-i18n="Accordion">Accordion</div>
+        <a href="{{ url('order-all') }}" class="menu-link">
+          <div data-i18n="Accordion">Show Orders</div>
         </a>
       </li>
-      <li class="menu-item">
-        <a href="ui-alerts.html" class="menu-link">
-          <div data-i18n="Alerts">Alerts</div>
+      {{-- <li class="menu-item">
+        <a href="{{ url('order-detail') }}" class="menu-link">
+          <div data-i18n="Alerts">Order Details</div>
         </a>
-      </li>
+      </li> --}}
     </ul>
   </li>
 

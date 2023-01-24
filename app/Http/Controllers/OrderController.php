@@ -29,6 +29,7 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request);
         $data=[
             'name'=>$request->name,
             'userid'=>auth()->user()->id,
@@ -39,7 +40,8 @@ class OrderController extends Controller
             'city'=>$request->city,
             'postal'=>$request->postal,
             'total'=>560,
-            'invoice'=>random_int(100000, 999999)
+            'invoice'=>random_int(100000, 999999),
+            'payment'=>$request->payment
         ];
         // dd($data);
         $order=new Order;
@@ -47,7 +49,7 @@ class OrderController extends Controller
         $del=DB::table('carts');
         $del->delete();
         
-        return view('main.comp',$data);
+        return redirect('orderget');
     }
 
     /**
@@ -56,9 +58,12 @@ class OrderController extends Controller
      * @param  \App\Http\Requests\StoreorderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreorderRequest $request)
+    public function store()
     {
-        //
+        $data=[];
+        $data['orderget']=order::all();
+        // dd($data);
+        return view('main.comp',$data);
     }
 
     /**
@@ -67,9 +72,12 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(order $order)
+    public function show()
     {
-        //
+        $data=[];
+        $data['orderget']=order::all();
+        // dd($data);
+        return view('admin.orders.order',$data);
     }
 
     /**
@@ -78,9 +86,12 @@ class OrderController extends Controller
      * @param  \App\Models\order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(order $order)
+    public function edit($id)
     {
-        //
+        $data=[];
+        $data['orderdetail']=order::find($id);
+        dd($data);
+        return view('admin.orders.order-detail',$data);
     }
 
     /**

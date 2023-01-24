@@ -95,7 +95,7 @@ class CartController extends Controller
     public function edit(Request $request)
     {
        $data=$request->all();
-        // dd($data);
+        dd($data);
        unset($data['_token']);
        foreach ($data['cart'] as $key => $value) {
 

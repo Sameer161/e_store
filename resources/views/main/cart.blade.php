@@ -1,5 +1,11 @@
 @extends('main.body')
 @section('content')
+<style type="text/css">
+	td input{
+		border: none !important;
+		text-align: center;
+	}
+</style>
 <div class="container" style="margin-top: 162px;margin-bottom: 81px;">
 	<div class="row">
 		<div class="col-md-12">
@@ -24,11 +30,14 @@
 							<td>
 								<div class="right-content">
 									<div class="quantity buttons_added">
-										<input type="button" value="-" class="minus"><input type="text" name="cart[{{ $item->id }}][quantity]" value="{{ $item->quantity }}" class="input-text qty text" id="count"><input type="button" value="+" class="plus"><input type="hidden" class="baseprice" value="{{ $item->prod->price }}">
+										<input type="button" value="-" class="minus"><input type="text" name="cart[{{ $item->id }}][quantity]" value="{{ $item->quantity }}" class="input-text qty text" id="count" disabled="disabled"><input type="button" value="+" class="plus"><input type="hidden" class="baseprice" value="{{ $item->prod->price }}">
 									</div>
 								</div>
 							</td>
-							<td name="nprice" class="newprice">{{ $item->prod->price*$item->quantity }}</td>
+							{{-- <td name="nprice" class="newprice">{{ $item->prod->price*$item->quantity }}</td> --}}
+							<td>
+								<input type="number" name="nprice" class="newprice" value="{{ $item->prod->price*$item->quantity }}" disabled="disabled">
+							</td>
 							<td><a href="{{ url('delal/'.$item->id) }}"><i class="fas fa-trash" aria-hidden="true" style="color:#dc3545;"></i></a></td>
 						</tr>
 						@endforeach()
@@ -103,7 +112,8 @@
 			// $(this).('#newquan').val(newq ty);
 			var pri=$(this).next('.baseprice').val();
 			var newprice=newqty*pri;
-			$(this).parents('td').next().text(newprice);
+			// $(this).parents('td').next().text(newprice);
+			$(this).parents('td').next().child('input').val(newprice);
 		});
 
 		$(".minus").click(function()
@@ -118,7 +128,8 @@
 				console.log(currentVal - 1);
 				var pri=$(this).nextAll('.baseprice').val();
 				var newprice=newqty*pri;
-				$(this).parents('td').next().text(newprice);
+				// $(this).parents('td').next().text(newprice);
+				$(this).parents('td').next().child('input').val(newprice);
 			}
 		});
 	});

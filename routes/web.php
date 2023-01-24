@@ -51,6 +51,7 @@ Route::post('/updatecart',[App\Http\Controllers\CartController::class,'edit']);
 Route::get('/checkout',[App\Http\Controllers\CartController::class,'store']);
 //Order
 Route::post('/order',[App\Http\Controllers\OrderController::class,'create']);
+Route::get('orderget/',[App\Http\Controllers\OrderController::class,'store']);
 
 //Stripe
 
@@ -58,6 +59,10 @@ Route::get('stripe', [App\Http\Controllers\StripePaymentController::class, 'stri
 Route::post('stripe', [App\Http\Controllers\StripePaymentController::class, 'stripePost'])->name('stripe.post');
 //Login
 Route::view('/userlogin','admin.user.login');
+
+//Admin Order
+Route::get('order-all',[App\Http\Controllers\OrderController::class,'show']);
+Route::get('order-detail/{id}',[App\Http\Controllers\OrderController::class,'edit']);
 
 //Cart Logo
 // Route::get('/cartquan',[App\Http\Controllers\CartController::class,'update']);
