@@ -38,7 +38,7 @@
 							<input class="" type="number" name="postal" placeholder="Enter Postal Code" required>
 						</div>
 					</div>
-					<input type="hidden" name="sutotal" value="${{ totalprice() }}">
+					<input type="hidden" name="sutotal" value="{{ totalprice() }}">
 				</div>
 				<div class="bg-dark text-white py-3 px-4">Payment</div>
 				<div style="border: 1px solid #7a7a7a;padding: 20px;">

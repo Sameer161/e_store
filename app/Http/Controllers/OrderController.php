@@ -40,10 +40,11 @@ class OrderController extends Controller
                 'email'=>$request->email,
                 'city'=>$request->city,
                 'postal'=>$request->postal,
-                'total'=>560,
+                'total'=>$request->sutotal,
                 'invoice'=>random_int(100000, 999999),
                 'payment'=>$request->payment
             ];
+            // dd($data);
             $order=new Order;
             $order->insert($data);
 
