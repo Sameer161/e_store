@@ -104,6 +104,12 @@
                             <li class="scroll-to-section"><a href="#explore">Explore</a></li>
                             @if(!Auth::check())
                             <li class="scroll-to-section"><a href="{{ url('userlogin') }}">Login/Regiter</a></li>
+                            @else
+                            <li class="scroll-to-section"> <a class="" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}
+                            </a></li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                             @endif()
                             <li class="scroll-to-section position-relative">
                                 <a href="{{ url('cartitem') }}">
@@ -215,9 +221,9 @@
         <script>
             $(function() {
                 setTimeout(function() {
-                 $("#newpreloader").fadeOut(1500);
-                 $(".new-block").fadeIn(3000);
-                  }, 5000)
+                   $("#newpreloader").fadeOut(1500);
+                   $(".new-block").fadeIn(3000);
+               }, 5000)
             })
             $(function() {
                 var selectedClass = "";

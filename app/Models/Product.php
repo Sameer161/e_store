@@ -9,8 +9,4 @@ class Product extends Model
 {
     use HasFactory;
     protected $guarded=[];
-    //  public function prduct()
-    // {
-    //      return $this->hasOne(order::class,'id','prid');
-    // }
 }

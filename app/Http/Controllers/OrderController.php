@@ -29,27 +29,31 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request);
-        $data=[
-            'name'=>$request->name,
-            'userid'=>auth()->user()->id,
-            'prid'=>$request->prid,
-            'phone'=>$request->phone,
-            'adress'=>$request->adress,
-            'email'=>$request->email,
-            'city'=>$request->city,
-            'postal'=>$request->postal,
-            'total'=>560,
-            'invoice'=>random_int(100000, 999999),
-            'payment'=>$request->payment
-        ];
-        // dd($data);
-        $order=new Order;
-        $order->insert($data);
-        $del=DB::table('carts');
-        $del->delete();
-        
-        return redirect('orderget');
+        if($request->payment=='delivery')
+        {
+            $data=[
+                'name'=>$request->name,
+                'userid'=>auth()->user()->id,
+                'prid'=>$request->prid,
+                'phone'=>$request->phone,
+                'adress'=>$request->adress,
+                'email'=>$request->email,
+                'city'=>$request->city,
+                'postal'=>$request->postal,
+                'total'=>560,
+                'invoice'=>random_int(100000, 999999),
+                'payment'=>$request->payment
+            ];
+            $order=new Order;
+            $order->insert($data);
+            $del=DB::table('carts');
+            $del->delete();
+
+            return redirect('orderget');
+        }
+        else{
+            return redirect('stripe');
+        }
     }
 
     /**
@@ -89,7 +93,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         $data=[];
-        $data['orderdetail']=order::find($id);
+        $data['orderdetail']=order::find($id)::with('prduct')->get();
         // dd($data);
         return view('admin.orders.order-detail',$data);
     }
