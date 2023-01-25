@@ -95,16 +95,19 @@ class CartController extends Controller
     public function edit(Request $request)
     {
        $data=$request->all();
-        dd($data);
        unset($data['_token']);
-       foreach ($data['cart'] as $key => $value) {
-
-        $updacart=Cart::find($key);
-        $data=[
-            'quantity'=>$value['quantity']
+        // dd($data);
+       foreach ($data['quantity'] as $key => $value) {
+        $cart=[
+            'quantity'=>$value,
+            'price'=>$data['nprice'][$key],
+            'id'=>$data['cartid'][$key]
         ];
-        $updacart->update($data);
+        // dump($cart);
+        $updacart=Cart::find($cart['id']);
+        $updacart->update($cart);
     }
+    // die();
     return redirect('/cartitem');
 }
 

@@ -90,7 +90,7 @@ class OrderController extends Controller
     {
         $data=[];
         $data['orderdetail']=order::find($id);
-        dd($data);
+        // dd($data);
         return view('admin.orders.order-detail',$data);
     }
 

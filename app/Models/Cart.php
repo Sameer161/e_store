@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
      protected $fillable = [
-        'quantity',
+        'quantity','price',
     ];
     use HasFactory;
     // protected $table='products';
