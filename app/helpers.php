@@ -7,6 +7,6 @@ function changeDateFormate(){
 }
 
 function totalprice(){
-   $toprice=Cart::get()->sum('price');
+   $toprice=Cart::where('userid', auth()->user()->id)->get()->sum('price');
    return ($toprice);
 }
