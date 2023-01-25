@@ -44,12 +44,9 @@ class OrderController extends Controller
                 'invoice'=>random_int(100000, 999999),
                 'payment'=>$request->payment
             ];
-            // dd($data);
             $order=new Order;
             $order->insert($data);
-
             $del=Cart::where('userid',auth()->user()->id)->delete();
-
             return redirect('orderget');
         }
         else{
