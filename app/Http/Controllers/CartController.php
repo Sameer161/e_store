@@ -62,7 +62,7 @@ class CartController extends Controller
     public function store()
     {
         $data=[];
-        $data['cart']=Cart::with('prod')->get();
+        $data['cart']=Cart::with('prod')->where('userid',auth()->user()->id)->get();
         return view('main.checkout',$data);
     }
 

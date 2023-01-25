@@ -46,8 +46,8 @@ class OrderController extends Controller
             ];
             $order=new Order;
             $order->insert($data);
-            $del=DB::table('carts');
-            $del->delete();
+
+            $del=Cart::where('userid',auth()->user()->id)->delete();
 
             return redirect('orderget');
         }
