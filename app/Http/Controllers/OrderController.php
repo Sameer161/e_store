@@ -46,6 +46,7 @@ class OrderController extends Controller
             ];
             $order=new Order;
             $order->insert($data);
+
             $del=Cart::where('userid',auth()->user()->id)->delete();
             return redirect('orderget');
         }
@@ -63,7 +64,7 @@ class OrderController extends Controller
     public function store()
     {
         $data=[];
-        $data['orderget']=order::all();
+        $data['orderget']=order::where('userid',auth()->user()->id)->get;
         // dd($data);
         return view('main.comp',$data);
     }
@@ -91,8 +92,8 @@ class OrderController extends Controller
     public function edit($id)
     {
         $data=[];
-        $data['orderdetail']=order::find($id)::with('prduct')->get();
-        // dd($data);
+        $data['orderdetail']=order::with('prduct')->find($id);
+        // dd($data['orderdetail']->toArray());
         return view('admin.orders.order-detail',$data);
     }
 

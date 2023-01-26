@@ -3,7 +3,7 @@
 <div class="layout-page">
 	<div class=" container-xxl">
 		<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Order /</span>Show Orders</h4>
-		<div class="row">
+		<div class="row mb-4">
 			<div class="col-md-6">
 				<div class="card">
 					<h5 class="card-header">Order Detail</h5>
@@ -72,7 +72,17 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="card">
-					
+					<div class="table-responsive text-nowrap">
+						<table class="table table-bordered text-center">
+							<tbody>
+								{{-- @dd($orderdetail) --}}
+								<tr>
+									<td>Invoice</td>
+									<td>{{ $orderdetail->prduct[0]->name }}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
