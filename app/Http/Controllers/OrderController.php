@@ -29,6 +29,7 @@ class OrderController extends Controller
      */
     public function create(Request $request)
     {
+        // dd($request);
         if($request->payment=='delivery')
         {
             $data=[
@@ -42,8 +43,10 @@ class OrderController extends Controller
                 'postal'=>$request->postal,
                 'total'=>$request->sutotal,
                 'invoice'=>random_int(100000, 999999),
-                'payment'=>$request->payment
+                'payment'=>$request->payment,
+                'quantity'=>$request->quantity
             ];
+            // dd($data);
             $order=new Order;
             $order->insert($data);
 
@@ -64,7 +67,7 @@ class OrderController extends Controller
     public function store()
     {
         $data=[];
-        $data['orderget']=order::where('userid',auth()->user()->id)->get;
+        $data['orderget']=order::where('userid',auth()->user()->id)->get();
         // dd($data);
         return view('main.comp',$data);
     }

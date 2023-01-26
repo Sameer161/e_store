@@ -74,11 +74,23 @@
 				<div class="card">
 					<div class="table-responsive text-nowrap">
 						<table class="table table-bordered text-center">
+							<thaed>
+								<tr>
+									<th>Product Image</th>
+									<th>Product Name</th>
+									<th>Product Price</th>
+									<th>Product Quantity</th>
+									<th>Total Price</th>
+								</tr>
+							</thaed>
 							<tbody>
 								{{-- @dd($orderdetail) --}}
 								<tr>
-									<td>Invoice</td>
+									<td><img src="{{ url('storage/app/'.$orderdetail->prduct[0]->image) }}" style="max-width: 100px;"></td>
 									<td>{{ $orderdetail->prduct[0]->name }}</td>
+									<td>{{ $orderdetail->quantity }}</td>
+									<td>{{ $orderdetail->prduct[0]->price }}</td>
+									<td>{{ $orderdetail->total }}</td>
 								</tr>
 							</tbody>
 						</table>

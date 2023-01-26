@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('city');
             $table->integer('postal');
             $table->integer('invoice');
+            $table->integer('quantity');
             $table->string('total');
             $table->string('payment');
             // $table->foreignId('cartid')->nullable()->constrained('carts')->onDelete('cascade')->onUpdate('cascade');

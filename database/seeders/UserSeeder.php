@@ -18,6 +18,9 @@ class UserSeeder extends Seeder
         $user=new User;
         $user->name="Admin";
         $user->email="admin@gmail.com";
+        $user->adress="Al burhan city house no.5";
+        $user->city="Lahore";
+        $user->postal=40100;
         $user->password=Hash::make("admin@123");
         $user->role=1;
         $user->save();
@@ -25,6 +28,9 @@ class UserSeeder extends Seeder
         $user=new User;
         $user->name="User";
         $user->email="user@gmail.com";
+        $user->adress="Al burhan city house no.2 street no.5";
+        $user->city="Sargodha";
+        $user->postal=40100;
         $user->password=Hash::make("user@123");
         $user->save();
     }

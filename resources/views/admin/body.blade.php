@@ -54,7 +54,7 @@ data-template="vertical-menu-template-free">
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-          <a href="{{ url('index') }}" class="app-brand-link">
+          <a href="{{ url('home') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
               <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
@@ -113,8 +113,8 @@ data-template="vertical-menu-template-free">
 
 <ul class="menu-inner py-1">
   <!-- Dashboard -->
-  <li class="menu-item @if(url()->current()==url('/index')) active @endif">
-    <a href="{{ url('index') }}" class="menu-link">
+  <li class="menu-item @if(url()->current()==url('/home')) active @endif">
+    <a href="{{ url('home') }}" class="menu-link">
       <i class="menu-icon tf-icons bx bx-home-circle"></i>
       <div data-i18n="Analytics">Dashboard</div>
     </a>
@@ -143,7 +143,7 @@ data-template="vertical-menu-template-free">
     </ul>
   </li>
 
-  <li class="menu-item">
+  <li class="menu-item @if(url()->current()==url('/addproducts')||url()->current()==url('/viewproducts'))) active @endif">
     <a href="javascript:void(0);" class="menu-link menu-toggle">
       <i class="menu-icon tf-icons bx bx-dock-top"></i>
       <div data-i18n="Account Settings">Products</div>
@@ -162,7 +162,7 @@ data-template="vertical-menu-template-free">
     </ul>
   </li>
   <!-- User interface -->
-  <li class="menu-item">
+  <li class="menu-item @if(url()->current()==url('/order-all')) active @endif">
     <a href="javascript:void(0)" class="menu-link menu-toggle">
       <i class="menu-icon tf-icons bx bx-box"></i>
       <div data-i18n="User interface">Orders</div>

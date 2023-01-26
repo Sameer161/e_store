@@ -14,15 +14,15 @@
 				<div class="mb-3"style="border: 1px solid #7a7a7a;padding: 20px;">
 					<div class="row justify-content-between subscribe mb-3">
 						<div class="col-md-6">
-							<input class="" type="text" name="name" placeholder="Enter Name" required>
+							<input class="" type="text" name="name" placeholder="Enter Name" value="{{ auth()->user()->name }}" required>
 						</div>
 						<div class="col-md-6">
-							<input class="" type="number" name="phone" placeholder="Enter Phone Number" required>
+							<input class="" type="number" name="phone" placeholder="Enter Phone Number" value="{{ auth()->user()->number }}" required>
 						</div>
 					</div>
 					<div class="row subscribe mb-3">
 						<div class="col-md-12">
-							<input class="" type="email" name="email" placeholder="Enter Email" required>
+							<input class="" type="email" name="email" placeholder="Enter Email" value="{{ auth()->user()->email }}" required>
 						</div>
 					</div>
 					<div class="row subscribe mb-3">
@@ -95,7 +95,7 @@
 					</div>
 					<input type="hidden" name="userid" value="{{ $chkout->userid }}">
 					<input type="hidden" name="prid" value="{{ $chkout->prid }}">
-					<input type="hidden" name="">
+					<input type="hidden" name="quantity" value="{{ $chkout->quantity }}">
 					@endforeach
 				</div>
 			</div>
