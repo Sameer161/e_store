@@ -64,6 +64,8 @@ Route::view('/userlogin','admin.user.login');
 Route::get('order-all',[App\Http\Controllers\OrderController::class,'show']);
 Route::get('order-detail/{id}',[App\Http\Controllers\OrderController::class,'edit']);
 
+//User Admin Panel
+Route::view('userinfo','admin.user.user-main');
 //Cart Logo
 // Route::get('/cartquan',[App\Http\Controllers\CartController::class,'update']);
 // Route::get('helper2', [App\Http\Controllers\CartController::class,'update']);

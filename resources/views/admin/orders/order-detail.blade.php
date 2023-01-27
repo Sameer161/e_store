@@ -25,11 +25,11 @@
 										<td>{{ $orderdetail->postal }}</td>
 									</tr>
 									<tr>
-										<td>Total</td>
+										<td>Total Order</td>
 										<td>{{ $orderdetail->total }}</td>
 									</tr>
 									<tr>
-										<td>Payment</td>
+										<td>Payment Type</td>
 										<td>{{ $orderdetail->payment }}</td>
 									</tr>
 								</tbody>

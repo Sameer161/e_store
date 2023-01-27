@@ -43,7 +43,7 @@
 				<div class="bg-dark text-white py-3 px-4">Payment</div>
 				<div style="border: 1px solid #7a7a7a;padding: 20px;">
 					<div class="form-check mb-2">
-						<input class="form-check-input" type="radio" name="payment" id="" value="delivery" required>
+						<input class="form-check-input" type="radio" name="payment" id="" value="cash on delivery" required>
 						<label class="form-check-label" for="exampleRadios1">
 							Cash On Delivery
 						</label>

@@ -30,7 +30,7 @@ class OrderController extends Controller
     public function create(Request $request)
     {
         // dd($request);
-        if($request->payment=='delivery')
+        if($request->payment=='cash on delivery')
         {
             $data=[
                 'name'=>$request->name,

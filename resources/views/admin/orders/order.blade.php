@@ -11,9 +11,8 @@
 						<thead>
 							<tr>
 								<th>Name</th>
-								<th>Email</th>
-								<th>Address</th>
 								<th>Emial</th>
+								<th>Address</th>
 								<th>City</th>
 								<th>Detail</th>
 							</tr>
@@ -27,7 +26,6 @@
 								<td>{{ $view->name }}</td>
 								<td>{{ $view->email }}</td>
 								<td>{{ $view->adress }}</td>
-								<td>{{ $view->email }}</td>
 								<td>{{ $view->city }}</td>
 								<td>
 									{{-- <a class="" href="{{ url('deletecategories/'.$view->id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a> --}}

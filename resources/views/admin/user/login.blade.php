@@ -241,9 +241,14 @@
               @enderror
             </div>
           </div>
+
           <div class="row mb-3">
-            <label for="email" class="col-md-4 col-form-label text-md-end">Address</label>
-            <input type="text" name="adress" class="form-control" required>
+            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
+
+            <div class="col-md-6">
+              <input id="" type="text" class="form-control" name="adress"  required>
+
+            </div>
           </div>
 
           <div class="row mb-3">

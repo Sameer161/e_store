@@ -110,6 +110,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
+                            <li class="scroll-to-section"><a href="{{ url('/userinfo') }}"><i class="fa-solid fa-user"></i></a></li>
                             @endif()
                             <li class="scroll-to-section position-relative">
                                 <a href="{{ url('cartitem') }}">
