@@ -210,10 +210,10 @@
         </div>
       </div>
       <div class="user signupBx">
-       <div class="card-body formBx">
+       <div class="card-body formBx" style="overflow-y: scroll;">
         <form method="POST" action="{{ route('register') }}">
           @csrf
-
+          {{-- Name --}}
           <div class="row mb-3">
             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
@@ -227,7 +227,7 @@
               @enderror
             </div>
           </div>
-
+          {{-- Email --}}
           <div class="row mb-3">
             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
@@ -241,16 +241,34 @@
               @enderror
             </div>
           </div>
-
+          {{-- Adress --}}
           <div class="row mb-3">
             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
 
             <div class="col-md-6">
-              <input id="" type="text" class="form-control" name="adress"  required>
+              <input id="" type="text" class="form-control" name="adress" value="">
 
             </div>
           </div>
+          {{-- City --}}
+          <div class="row mb-3">
+            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
 
+            <div class="col-md-6">
+              <input id="" type="text" class="form-control" name="city" value="">
+
+            </div>
+          </div>
+          {{-- Postal --}}
+          <div class="row mb-3">
+            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Postal') }}</label>
+
+            <div class="col-md-6">
+              <input id="" type="number" class="form-control" name="postal" value="">
+
+            </div>
+          </div>
+          {{-- Password --}}
           <div class="row mb-3">
             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -264,6 +282,7 @@
               @enderror
             </div>
           </div>
+          {{-- Confirm Password --}}
 
           <div class="row mb-3">
             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>

@@ -101,9 +101,9 @@
 				<h6>Order Updates</h6>
 				<p>You will get shipping and delivery updates by email.</p>
 			</div>
+			@foreach($orderget as $comp)
 			<div class="borderd-dark border mb-3 p-3">
 				<h6>Customer information</h6>
-				@foreach($orderget as $comp)
 				<table class="table table-borderless">
 					<tbody>
 						<tr>
@@ -134,8 +134,8 @@
 						</tr>
 					</tbody>
 				</table>
-				@endforeach()
 			</div>
+			@endforeach()
 			<div class="text-right" style="margin-bottom: 20px;">
 				<a href="{{ url('/') }}" class="new-button">Continuo Shopping</a>
 			</div>

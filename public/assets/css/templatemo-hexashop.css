@@ -2385,3 +2385,106 @@ responsive
                     opacity: 0;
                   }
                 }
+                .new-nav {
+                  position: fixed;
+                  width: 3%;
+                  height: 413px;
+                  background: var(--bg-secondary);
+                  transition: .5s;
+                  overflow: hidden;
+                }
+
+                .new-nav.active {
+                  width: 12%;
+                }
+                .new-nav ul {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                }
+
+                .new-nav ul li {
+                  list-style: none;
+                  width: 100%;
+                  position: relative;
+
+                }
+
+                .new-nav ul li a:hover {
+                  color: var(--bg-primary);
+                }
+
+                .new-nav ul li:hover a::before {
+                  background-color: var(--bg-active);
+                  width: 100%;
+                }
+
+                .new-nav ul li a {
+                  position: relative;
+                  display: block;
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  text-decoration: none;
+                  color: var(--cl-text);
+                  transition: .2s;
+                }
+
+                .new-nav ul li a::before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 0;
+                  height: 100%;
+                  transition: .2s;
+                }
+
+                .new-nav ul li a .icon {
+                  position: relative;
+                  display: block;
+                  min-width: 60px;
+                  height: 60px;
+                  line-height: 60px;
+                  text-align: center;
+                }
+
+                .new-nav ul li a .title {
+                  position: relative;
+                  font-size: .85em;
+                }
+
+                .new-nav ul li a .icon * {
+                  font-size: 1.1em;
+                }
+
+                .new-nav ul li a.toggle {
+                  border-bottom: 3px solid var(--bg-primary);
+                }
+
+                .toggle {
+                  cursor: pointer;
+                }
+                @media (max-width: 768px)
+                .new-nav {
+                  left: -60px;
+                }
+
+                .new-nav.active {
+                  left: 0;
+                  width: 100%;
+                }
+
+                .new-nav ul li a.toggle {
+                  display: none;
+                }
+
+
+                :root {
+                  --bg-primary: #41444b;
+                  --bg-secondary: #52575d;
+                  --bg-active: #fddb3a;
+                  --cl-text: #f6f4e6;
+                }
+              }
