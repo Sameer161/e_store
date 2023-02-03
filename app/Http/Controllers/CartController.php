@@ -12,14 +12,9 @@ use Storage;
 use DB;
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
-        //
     }
 
     /**
@@ -94,16 +89,16 @@ class CartController extends Controller
      */
     public function edit(Request $request)
     {
-       $data=$request->all();
-       unset($data['_token']);
+     $data=$request->all();
+     unset($data['_token']);
         // dd($data);
-       foreach ($data['quantity'] as $key => $value) {
+     foreach ($data['quantity'] as $key => $value) {
         $cart=[
             'quantity'=>$value,
             'price'=>$data['nprice'][$key],
             'id'=>$data['cartid'][$key]
         ];
-        // dump($cart);
+        // dd($cart);
         $updacart=Cart::find($cart['id']);
         $updacart->update($cart);
     }

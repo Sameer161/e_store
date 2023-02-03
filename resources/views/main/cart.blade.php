@@ -6,8 +6,8 @@
 		text-align: center;
 	}
 </style>
-<div class="container" style="margin-top: 162px;margin-bottom: 81px;">
-	<div class="row">
+<div class="container" style="margin-bottom: 81px;overflow: hidden;">
+	<div class="row" style="margin-top: 170px;">
 		<div class="col-md-12">
 			<form method="POST" action="{{ url('updatecart') }}">
 				@csrf

@@ -7,9 +7,7 @@
 	#newpreloader {
 		position: unset !important;
 		background: transparent;
-		overflow: unset;
-		margin-top: 83px;
-		margin-bottom: 30px;
+		overflow: hidden;
 	}
 	#newloader {
 		display: block;
@@ -18,7 +16,8 @@
 		top: 50%;
 		width: 150px;
 		height: 150px;
-		margin: 0px;
+		margin-top: 192px;
+		margin-bottom: 111px;
 		border-radius: 50%;
 		border: 3px solid transparent;
 		border-top-color: #2a2a2a;
@@ -81,8 +80,8 @@
 <div id="newpreloader">
 	<div id="newloader"></div>
 </div>
-<div class="container new-block" style="margin-top:100px;display: none;">
-	<div class="row">
+<div class="container new-block" style="overflow: hidden;display: none;">
+	<div class="row" style="margin-top: 150px;margin-bottom: 50px;">
 		<div class="col-lg-8">
 			<div class="d-flex mb-4">
 				<div>
@@ -136,8 +135,8 @@
 				</table>
 			</div>
 			@endforeach()
-			<div class="text-right" style="margin-bottom: 20px;">
-				<a href="{{ url('/') }}" class="new-button">Continuo Shopping</a>
+			<div class="text-right" style="">
+				<a href="{{ url('/') }}" class="new-button mt-3">Continuo Shopping</a>
 			</div>
 		</div>
 	</div>

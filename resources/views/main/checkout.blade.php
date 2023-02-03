@@ -5,9 +5,9 @@
 		margin-top: 0px;
 	}
 </style>
-<div class="container">
+<div class="container" style="overflow: hidden;">
 	<form method="POST" action="{{ url('/order') }}">
-		<div class="row" style="margin: 142px 0px 60px 0px;">
+		<div class="row" style="margin: 160px 0px 60px 0px;">
 			<div class="col-md-7">
 				@csrf
 				<div class="bg-dark text-white py-3 px-4">Delivery Option</div>
@@ -27,15 +27,15 @@
 					</div>
 					<div class="row subscribe mb-3">
 						<div class="col-md-12">
-							<input class="" type="text" name="adress" placeholder="Enter Address" required>
+							<input class="" type="text" name="adress" placeholder="Enter Address" value="{{ auth()->user()->adress }}" required>
 						</div>
 					</div>
 					<div class="row justify-content-between subscribe mb-3">
 						<div class="col-md-6">
-							<input class="" type="text" name="city" placeholder="Enter City" required>
+							<input class="" type="text" name="city" placeholder="Enter City" value="{{ auth()->user()->city }}" required>
 						</div>
 						<div class="col-md-6">
-							<input class="" type="number" name="postal" placeholder="Enter Postal Code" required>
+							<input class="" type="number" name="postal" placeholder="Enter Postal Code" value="{{ auth()->user()->postal }}" required>
 						</div>
 					</div>
 					<input type="hidden" name="sutotal" value="{{ totalprice() }}">
@@ -96,6 +96,7 @@
 					<input type="hidden" name="userid" value="{{ $chkout->userid }}">
 					<input type="hidden" name="prid" value="{{ $chkout->prid }}">
 					<input type="hidden" name="quantity" value="{{ $chkout->quantity }}">
+					<input type="hidden" name="price" value="{{ $chkout->price }}">
 					@endforeach
 				</div>
 			</div>

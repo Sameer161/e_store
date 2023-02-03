@@ -67,14 +67,66 @@
 		padding: 10px 20px;
 		margin-bottom: 10px;
 	}
+	.wrapper {
+		display: flex;
+		width: 600px;
+	}
+
+	.left,
+	.right {
+		flex: 1 1 auto;
+		/*border: 1px solid dimgray;*/
+		max-width: 50%;
+	}
+	.left > img {
+		width: 100%;
+		height: auto;
+		pointer-events: none;
+	}
+
+	.right {
+		position: relative;
+		overflow: hidden;
+		display:none;
+		z-index: 99999999;
+	}
+
+	.inner {
+		position: absolute;
+		width: 400%;
+		height: 400%;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.inner > img {
+		width: 100%;
+		height: auto;
+	}
+	.wrapper:hover .right{
+		display: block;
+	}
 </style>
-<section class="section" id="product">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8">
-				<div class="left-images">
-					<img src="{{ url('storage/app/'.$sinpr->image) }}" alt="">
+<section class="section" id="product" style="margin: 0px !important;">
+	<div class="container" style="margin-top: 150px;margin-bottom: 45px;">
+		<div class="row justify-content-center">
+			<div class="col-lg-4">
+				<div class="wrapper left-images">
+					<div class="left">
+						<img src="{{ url('storage/app/'.$sinpr->image) }}" alt="">
+
+					</div>
+					<div class="right">
+						<div class="inner">
+							<img src="{{ url('storage/app/'.$sinpr->image) }}" alt="">
+
+						</div>
+					</div>
 				</div>
+
 			</div>
 			<div class="col-lg-4">
 				<div class="right-content">
@@ -87,10 +139,10 @@
 						<li><i class="fa fa-star"></i></li>
 						<li><i class="fa fa-star"></i></li>
 					</ul>
-					<span>{{ $sinpr->description }}</span>
 					<div class="quote">
-						<i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
+						<p>{{ $sinpr->description }}</p>
 					</div>
+
 					<div class="quantity-content">
 						<div class="left-content">
 							<h6>No. of Orders</h6>
@@ -247,7 +299,7 @@
 		}
 	</script>
 	<script type="text/javascript">
-		
+
 		$(document).ready(function(){
 			$(".toreg").click(function(){
 				$(".signupBx").css({"display": "flex"});
@@ -258,6 +310,16 @@
 				$(".signinBx").css({"display": "flex"});
 			});
 		});
+		const inner = document.querySelector(".inner");
+		const left = document.querySelector(".left");
+		left.addEventListener("mousemove", handleMousemove, false);
+		function handleMousemove(event) {
+			let { width, height } = this.getBoundingClientRect();
+			let xAxis = event.offsetX / width * 100;
+			let yAxis = event.offsetY / height * 100;
+			inner.style.transform = `translate(-${xAxis}%, -${yAxis}%)`;
+		}
+
 	</script>
 </section>
 @endsection()

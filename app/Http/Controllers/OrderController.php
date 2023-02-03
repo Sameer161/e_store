@@ -8,6 +8,7 @@ use App\Http\Requests\StoreorderRequest;
 use App\Http\Requests\UpdateorderRequest;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Mail;
 
 
 class OrderController extends Controller
@@ -19,7 +20,19 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        // $orderdetail=order::where('userid',auth()->user()->id)->get();
+        // dd($orderdetail[0]->name);
+        $details=
+        [
+            'title' => 'Mail from Hexashop',
+            'body' =>  [
+                'name'=>'Sameer',
+            ],
+        ];
+
+        Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
+        dd("Email is Sent.");
+
     }
 
     /**
@@ -51,7 +64,15 @@ class OrderController extends Controller
             $order->insert($data);
 
             $del=Cart::where('userid',auth()->user()->id)->delete();
+            $details=
+            [
+                'title' => 'Mail from Hexashop',
+                'body' =>  $data,
+            ];
+
+            Mail::to(auth(0)->user()->email)->send(new \App\Mail\MyTestMail($details));
             return redirect('orderget');
+
         }
         else{
             return redirect('stripe');

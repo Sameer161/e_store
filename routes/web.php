@@ -67,10 +67,11 @@ Route::get('order-detail/{id}',[App\Http\Controllers\OrderController::class,'edi
 //User Admin Panel
 Route::view('userinfo','admin.user.user-main');
 Route::get('userorder',[App\Http\Controllers\UserPanelController::class,'show']);
-Route::get('userdetail',[App\Http\Controllers\UserPanelController::class,'read']);
+Route::get('userdetail/{id}',[App\Http\Controllers\UserPanelController::class,'read']);
 Route::get('userupdate/{id}',[App\Http\Controllers\UserPanelController::class,'edit']);
 Route::post('updateuser/{id}',[App\Http\Controllers\UserPanelController::class,'update']);
-//Cart Logo
-// Route::get('/cartquan',[App\Http\Controllers\CartController::class,'update']);
-// Route::get('helper2', [App\Http\Controllers\CartController::class,'update']);
-// Route::get('custom-helper', [App\Http\Controllers\CartController::class,'update']);
+
+//Email Sending
+
+Route::get('send-mail',[App\Http\Controllers\OrderController::class,'index']);
+

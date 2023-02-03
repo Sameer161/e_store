@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -67,7 +66,7 @@
     
     
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky new-hea">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -239,7 +238,12 @@
 
                 });
             });
-
+        </script>
+        <script type="text/javascript">
+            if($('.new-hea').hasClass('background-header')) {
+                // alert('hello');
+                $(".new-container").css("margin-top", "110px");
+            }
         </script>
 
     </body>
