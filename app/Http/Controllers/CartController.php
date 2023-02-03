@@ -98,7 +98,7 @@ class CartController extends Controller
             'price'=>$data['nprice'][$key],
             'id'=>$data['cartid'][$key]
         ];
-        // dd($cart);
+        // dd ($cart);
         $updacart=Cart::find($cart['id']);
         $updacart->update($cart);
     }
