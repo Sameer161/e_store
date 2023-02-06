@@ -16,9 +16,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $q=$request->search;
+        $products =  Product::where('name','LIKE','%'.$q.'%')->orWhere('description','LIKE','%'.$q.'%')->orWhere('price','LIKE','%'.$q.'%')->get();
+        // dd($products);
+        return view('main.search',compact('products'));
     }
 
     /**

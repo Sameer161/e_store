@@ -29,7 +29,6 @@ class OrderController extends Controller
                 'name'=>'Sameer',
             ],
         ];
-
         Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
         dd("Email is Sent.");
 
@@ -70,7 +69,8 @@ class OrderController extends Controller
                 'body' =>  $data,
             ];
 
-            Mail::to(auth(0)->user()->email)->send(new \App\Mail\MyTestMail($details));
+            Mail::to(auth()->user()->email,'sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
+            Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
             return redirect('orderget');
 
         }

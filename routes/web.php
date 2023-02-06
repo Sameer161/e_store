@@ -39,6 +39,7 @@ Route::get('/viewproducts',[App\Http\Controllers\ProductController::class,'show'
 Route::get('/delproduct/{id}',[App\Http\Controllers\ProductController::class,'destroy']);
 Route::get('/updateproduct/{id}',[App\Http\Controllers\ProductController::class,'edit']);
 Route::post('/updateproduct/{id}',[App\Http\Controllers\ProductController::class,'update']);
+Route::post('search',[App\Http\Controllers\ProductController::class,'index']);
 
 // Single_Product
 Route::get('/singleproduct/{id}',[App\Http\Controllers\ProductController::class,'store']);
