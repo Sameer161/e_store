@@ -12,7 +12,7 @@ use Storage;
 use DB;
 class CartController extends Controller
 {
-  
+
     public function index()
     {
     }
@@ -80,31 +80,23 @@ class CartController extends Controller
             return redirect('/');
         }
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cart  $cart
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request)
     {
-     $data=$request->all();
-     unset($data['_token']);
-        // dd($data);
-     foreach ($data['quantity'] as $key => $value) {
-        $cart=[
-            'quantity'=>$value,
-            'price'=>$data['nprice'][$key],
-            'id'=>$data['cartid'][$key]
-        ];
-        // dd ($cart);
-        $updacart=Cart::find($cart['id']);
-        $updacart->update($cart);
+        $data=$request->all();
+        unset($data['_token']);
+        foreach ($data['quantity'] as $key => $value)
+        {
+            $cart=
+            [
+                'quantity'=>$value,
+                'price'=>$data['nprice'][$key],
+                'id'=>$data['cartid'][$key]
+            ];
+            $updacart=Cart::find($cart['id']);
+            $updacart->update($cart);
+        }
+        return redirect('/cartitem');
     }
-    // die();
-    return redirect('/cartitem');
-}
 
     /**
      * Update the specified resource in storage.

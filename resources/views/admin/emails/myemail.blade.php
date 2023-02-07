@@ -27,19 +27,24 @@
         <table cellspacing="5px" cellpadding="6px" style="width: 100%;margin-bottom: 35px;">
             <thead style="background: black; color: white;">
                 <tr>
+                    <th style="font-family: 'Google Sans'; font-size: 15px;">Name</th>
                     <th style="font-family: 'Google Sans'; font-size: 15px;">Quantity</th>
-                    <th style="font-family: 'Google Sans'; font-size: 15px;">Total</th>
-                    <th style="font-family: 'Google Sans'; font-size: 15px;">Payment Methhod</th>
+                    <th style="font-family: 'Google Sans'; font-size: 15px;">Price</th>
                 </tr>
             </thead>
             <tbody style="text-align: center;background: #eaeaea;">
                 <tr>
+                    <td style="font-family: 'Google Sans'; font-size: 15px;">{{ $details['body']['prname'] }}</td>
                     <td style="font-family: 'Google Sans'; font-size: 15px;">{{ $details['body']['quantity'] }}</td>
-                    <td style="font-family: 'Google Sans'; font-size: 15px;">{{ $details['body']['total'] }}</td>
-                    <td style="font-family: 'Google Sans'; font-size: 15px;">{{ $details['body']['payment'] }}</td>
+                    <td style="font-family: 'Google Sans'; font-size: 15px;">{{ $details['body']['price'] }}</td>
                 </tr>
             </tbody>
         </table>
+        <div style="text-align:right;">
+            <p style="font-family: 'Google Sans'; font-size: 15px;"><span><b>Subtotal Total: </b></span>{{ $details['body']['total'] }}</p>
+            <p style="font-family: 'Google Sans'; font-size: 15px;"><span><b>Shippment Charges: </b></span>7</p>
+            <p style="font-family: 'Google Sans'; font-size: 15px;"><span><b>Grand Total: </b></span>{{ $details['body']['total']+7 }}</p>
+        </div>
 
         <p style="font-family: 'Google Sans';font-size: 16px;">Thank you</p>
     </div>

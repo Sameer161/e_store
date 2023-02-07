@@ -94,9 +94,10 @@
 						</div>
 					</div>
 					<input type="hidden" name="userid" value="{{ $chkout->userid }}">
-					<input type="hidden" name="prid" value="{{ $chkout->prid }}">
-					<input type="hidden" name="quantity" value="{{ $chkout->quantity }}">
-					<input type="hidden" name="price" value="{{ $chkout->price }}">
+					<input type="hidden" name="prname[]" value="{{ $chkout->prod->name }}">
+					<input type="hidden" name="prid[]" value="{{ $chkout->prid }}">
+					<input type="hidden" name="quantity[]" value="{{ $chkout->quantity }}">
+					<input type="hidden" name="price[]" value="{{ $chkout->price }}">
 					@endforeach
 				</div>
 			</div>

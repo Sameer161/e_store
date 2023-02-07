@@ -44,6 +44,7 @@ class OrderController extends Controller
         // dd($request);
         if($request->payment=='cash on delivery')
         {
+            $data=[];
             $data=[
                 'name'=>$request->name,
                 'userid'=>auth()->user()->id,
@@ -62,14 +63,15 @@ class OrderController extends Controller
             $order=new Order;
             $order->insert($data);
 
+            $data['price']=$request->price;
+            $data['prname']=$request->prname;
             $del=Cart::where('userid',auth()->user()->id)->delete();
             $details=
             [
                 'title' => 'Mail from Hexashop',
                 'body' =>  $data,
             ];
-
-            Mail::to(auth()->user()->email,'sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
+            // Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
             Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
             return redirect('orderget');
 
@@ -118,6 +120,7 @@ class OrderController extends Controller
         $data=[];
         $data['orderdetail']=order::with('prduct')->find($id);
         // dd($data['orderdetail']->toArray());
+        // dd($data);
         return view('admin.orders.order-detail',$data);
     }
 
