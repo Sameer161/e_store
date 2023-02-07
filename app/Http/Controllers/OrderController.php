@@ -32,7 +32,7 @@ class OrderController extends Controller
         {
             $data=$request->all();
             unset($data['_token']);
-            // dd($data);
+            dd($data);
             $oitem=[];
             foreach ($data['quantity'] as $key => $value) {
                 $oitem=
@@ -50,19 +50,20 @@ class OrderController extends Controller
                     'payment'=>$request->payment,
                     'userid'=>auth()->user()->id,
                 ];
-                $order=new Order;
-                $order->insert($oitem);
-                $oitem['price']=$data['price'][$key];
-                $oitem['prname']=$data['prname'][$key];
-            // dd($oitem);
-                $details=
-                [
-                    'title' => 'Mail from Hexashop',
-                    'body' =>  $oitem,
-                ];
-            // Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
-                Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
+                dd($oitem);
             }
+            $order=new Order;
+            $order->insert($oitem);
+            $oitem['price']=$data['price'][$key];
+            $oitem['prname']=$data['prname'][$key];
+            // dd($oitem);
+            $details=
+            [
+                'title' => 'Mail from Hexashop',
+                'body' =>  $oitem,
+            ];
+            // Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
+            Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
             $del=Cart::where('userid',auth()->user()->id)->delete();
 
             return redirect('orderget');
