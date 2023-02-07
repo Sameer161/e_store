@@ -58,7 +58,7 @@
 			</ul>
 		</div>
 		<div class="col-md-9" style="margin-top: 168px;">
-			<form class="col-md-8 border py-3 rounded mx-auto" action="{{ url('/updateuser/'.auth()->user()->id) }}" method="POST" style="margin-bottom:20px;">
+			<form class="col-md-8 border py-3 rounded" action="{{ url('/updateuser/'.auth()->user()->id) }}" method="POST" style="margin-bottom:20px;">
 				@csrf
 				{{-- @dd($userdetail); --}}
 				<div class="form-group">

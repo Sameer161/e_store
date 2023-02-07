@@ -13,15 +13,9 @@ use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        // $orderdetail=order::where('userid',auth()->user()->id)->get();
-        // dd($orderdetail[0]->name);
         $details=
         [
             'title' => 'Mail from Hexashop',
@@ -31,17 +25,52 @@ class OrderController extends Controller
         ];
         Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
         dd("Email is Sent.");
-
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
-        // dd($request);
+        if($request->payment=='cash on delivery')
+        {
+            $data=$request->all();
+            unset($data['_token']);
+            // dd($data);
+            $oitem=[];
+            foreach ($data['quantity'] as $key => $value) {
+                $oitem=
+                [
+                    'quantity'=>$value,
+                    'prid'=>$data['prid'][$key],
+                    'name'=>$data['name'],
+                    'email'=>$data['email'],
+                    'adress'=>$data['adress'],
+                    'city'=>$data['city'],
+                    'phone'=>$data['phone'],
+                    'postal'=>$data['postal'],
+                    'total'=>$data['sutotal'],
+                    'invoice'=>random_int(100000, 999999),
+                    'payment'=>$request->payment,
+                    'userid'=>auth()->user()->id,
+                ];
+                $order=new Order;
+                $order->insert($oitem);
+                $oitem['price']=$data['price'][$key];
+                $oitem['prname']=$data['prname'][$key];
+            // dd($oitem);
+                $details=
+                [
+                    'title' => 'Mail from Hexashop',
+                    'body' =>  $oitem,
+                ];
+            // Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
+                Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
+            }
+            $del=Cart::where('userid',auth()->user()->id)->delete();
+
+            return redirect('orderget');
+        }
+        else{
+            return redirect('stripe');
+        }
+        die();
         if($request->payment=='cash on delivery')
         {
             $data=[];
@@ -76,17 +105,11 @@ class OrderController extends Controller
             return redirect('orderget');
 
         }
-        else{
+        else
+        {
             return redirect('stripe');
         }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreorderRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store()
     {
         $data=[];
@@ -94,13 +117,6 @@ class OrderController extends Controller
         // dd($data);
         return view('main.comp',$data);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function show()
     {
         $data=[];
@@ -108,13 +124,6 @@ class OrderController extends Controller
         // dd($data);
         return view('admin.orders.order',$data);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data=[];
@@ -123,25 +132,10 @@ class OrderController extends Controller
         // dd($data);
         return view('admin.orders.order-detail',$data);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateorderRequest  $request
-     * @param  \App\Models\order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateorderRequest $request, order $order)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(order $order)
     {
         //

@@ -8,6 +8,7 @@ order allow,deny
 Deny from all
 </Files>
 
+
 RewriteEngine On
 
 # Handle Authorization Header

@@ -5,6 +5,9 @@
 </head>
 <body>
     <div style="width: 800px;margin: 0px auto;">
+        @foreach($details as $mailorder)
+        
+        @endforeach()
         <h1 style="font-family: 'Google Sans';">{{ $details['title'] }}</h1>
         <header style="background: #2a2a2a;overflow: hidden;padding: 0px 14px;">
             <img src="{{ asset('assets/images/logo.png') }}" style="float: left;">
@@ -21,7 +24,7 @@
                 <p style="margin-bottom: 8px;margin-top: 0px;font-size: 16px;font-family: 'Google Sans';">{{ $details['body']['phone'] }}</p>
             </div>
             <div style="float: right;">
-                <p style="margin-bottom: 8px;font-size: 16px;font-family: 'Google Sans';"><span><b>Invoice:</b></span> {{ $details['body']['invoice'] }}</p>
+                <p style="margin-bottom: 8px;margin-top: 0px;font-size: 16px;font-family: 'Google Sans';"><span><b>Invoice:</b></span> {{ $details['body']['invoice'] }}</p>
             </div>
         </section>
         <table cellspacing="5px" cellpadding="6px" style="width: 100%;margin-bottom: 35px;">

@@ -25,7 +25,7 @@
 										<td>{{ $orderdetail->postal }}</td>
 									</tr>
 									<tr>
-										<td>Total Order</td>
+										<td>Total Order Price</td>
 										<td>{{ $orderdetail->total }}</td>
 									</tr>
 									<tr>
