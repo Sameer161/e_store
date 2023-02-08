@@ -4,7 +4,20 @@
     <title>ItsolutionStuff.com</title>
 </head>
 <body>
+    {{-- @dd($details) --}}
     {{-- @dd($details['body']) --}}
+    
+
+    @foreach($details['body'] as $new)
+    {{-- @dd($new) --}}
+    {{-- @dd($new->name) --}}
+    {{-- @dd($new['orderdetail']->name) --}}
+    {{-- @dd($new['orderdetail']->email) --}}
+    @dd($new['orderdetail']->invoice)
+    @dd($new['orderdetail']->name)
+    @endforeach()
+
+    @die
     <div style="width: 800px;margin: 0px auto;">
         <h1 style="font-family: 'Google Sans';">{{ $details['title'] }}</h1>
         <header style="background: #2a2a2a;overflow: hidden;padding: 0px 14px;">

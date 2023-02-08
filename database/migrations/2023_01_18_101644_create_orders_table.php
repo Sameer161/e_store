@@ -17,17 +17,12 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('userid');
-            $table->integer('prid');
             $table->string('phone');
             $table->string('adress');
             $table->string('email');
             $table->string('city');
             $table->integer('postal');
             $table->integer('invoice');
-            $table->integer('quantity');
-            $table->string('total');
-            $table->string('payment');
-            // $table->foreignId('cartid')->nullable()->constrained('carts')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

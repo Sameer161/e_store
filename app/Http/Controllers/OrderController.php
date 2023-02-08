@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\order;
+use App\Models\OrderDetail;
 use App\Models\Cart;
 use App\Http\Requests\StoreorderRequest;
 use App\Http\Requests\UpdateorderRequest;
@@ -28,78 +29,53 @@ class OrderController extends Controller
     }
     public function create(Request $request)
     {
-        if($request->payment=='cash on delivery')
-        {
-            $data=$request->all();
-            unset($data['_token']);
-            dd($data);
-            $oitem=[];
-            foreach ($data['quantity'] as $key => $value) {
-                $oitem=
-                [
-                    'quantity'=>$value,
-                    'prid'=>$data['prid'][$key],
-                    'name'=>$data['name'],
-                    'email'=>$data['email'],
-                    'adress'=>$data['adress'],
-                    'city'=>$data['city'],
-                    'phone'=>$data['phone'],
-                    'postal'=>$data['postal'],
-                    'total'=>$data['sutotal'],
-                    'invoice'=>random_int(100000, 999999),
-                    'payment'=>$request->payment,
-                    'userid'=>auth()->user()->id,
-                ];
-                dd($oitem);
-            }
-            $order=new Order;
-            $order->insert($oitem);
-            $oitem['price']=$data['price'][$key];
-            $oitem['prname']=$data['prname'][$key];
-            // dd($oitem);
-            $details=
-            [
-                'title' => 'Mail from Hexashop',
-                'body' =>  $oitem,
-            ];
-            // Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
-            Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
-            $del=Cart::where('userid',auth()->user()->id)->delete();
-
-            return redirect('orderget');
-        }
-        else{
-            return redirect('stripe');
-        }
-        die();
+        // dd($request);
         if($request->payment=='cash on delivery')
         {
             $data=[];
             $data=[
                 'name'=>$request->name,
                 'userid'=>auth()->user()->id,
-                'prid'=>$request->prid,
                 'phone'=>$request->phone,
                 'adress'=>$request->adress,
                 'email'=>$request->email,
                 'city'=>$request->city,
                 'postal'=>$request->postal,
-                'total'=>$request->sutotal,
                 'invoice'=>random_int(100000, 999999),
-                'payment'=>$request->payment,
-                'quantity'=>$request->quantity
             ];
-            // dd($data);
-            $order=new Order;
-            $order->insert($data);
 
-            $data['price']=$request->price;
-            $data['prname']=$request->prname;
+            
+            $n=order::create($data);
+            // dd($n);
+            $orderdet=$request->all();
+            unset($orderdet['_token']);
+            foreach ($orderdet['quantity'] as $key => $value) {
+                $data=[
+                    'quantity'=>$value,
+                    'orderid'=>$n->id,
+                    'prid'=>$orderdet['prid'][$key],
+                    'price'=>$orderdet['price'][$key],
+                    'payment'=>$orderdet['payment'],
+                    'prname'=>$orderdet['prname'][$key],
+                    'total'=>$orderdet['sutotal'],
+                ];
+                // dd($data);
+                $new=new OrderDetail;
+                $new->insert($data);
+            }
+
+
+
+
+
+
             $del=Cart::where('userid',auth()->user()->id)->delete();
+            $mai=OrderDetail::with('orderdetail')->where('orderid',$n->id)->get();
+            // dd($mai);
             $details=
             [
                 'title' => 'Mail from Hexashop',
-                'body' =>  $data,
+                'body' =>  $mai,
             ];
             // Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
             Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
