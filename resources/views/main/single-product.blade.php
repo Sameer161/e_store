@@ -143,6 +143,7 @@
 						<p>{{ $sinpr->description }}</p>
 					</div>
 
+					@if($sinpr->stock>0)
 					<div class="quantity-content">
 						<div class="left-content">
 							<h6>No. of Orders</h6>
@@ -168,6 +169,9 @@
 							@endif
 						</form>
 					</div>
+					@else()
+					<span class="badge badge-danger" style="width: fit-content; color: white;">Out of stock</span>
+					@endif
 				</div>
 			</div>
 		</div>

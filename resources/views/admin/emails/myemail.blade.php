@@ -9,10 +9,10 @@
     
 
     @foreach($details['body'] as $new)
-    {{-- @dd($new) --}}
-    {{-- @dd($new->name) --}}
-    {{-- @dd($new['orderdetail']->name) --}}
-    {{-- @dd($new['orderdetail']->email) --}}
+    @dd($new)
+    @dd($new->name)
+    @dd($new['orderdetail']->name)
+    @dd($new['orderdetail']->email)
     @dd($new['orderdetail']->invoice)
     @dd($new['orderdetail']->name)
     @endforeach()
