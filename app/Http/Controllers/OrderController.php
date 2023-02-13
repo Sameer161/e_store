@@ -103,7 +103,9 @@ class OrderController extends Controller
         $data=[];
         $idget=order::select('id')->where('userid',auth()->user()->id)->get();
         $hell=$idget[0]['id'];
+        // dd($hell);
         $data['orderdetail']=OrderDetail::where('orderid',$hell);
+        $data['orderdetail']=OrderDetail::all();
         dd($data);
         return view('admin.orders.order-detail',$data);
     }
