@@ -109,6 +109,12 @@
 	.wrapper:hover .right{
 		display: block;
 	}
+	.alert-warning {
+		color: #856404;
+		background-color: #fff3cd;
+		border-color: #ffeeba;
+		top: 99px;
+	}
 </style>
 <section class="section" id="product" style="margin: 0px !important;">
 	<div class="container" style="margin-top: 150px;margin-bottom: 45px;">

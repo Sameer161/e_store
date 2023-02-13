@@ -42,8 +42,10 @@ class OrderController extends Controller
                 'city'=>$request->city,
                 'postal'=>$request->postal,
                 'invoice'=>random_int(100000, 999999),
+                'total'=>$request->sutotal,
             ];
 
+            // dd($data);
             
             $n=order::create($data);
             // dd($n);
@@ -57,16 +59,11 @@ class OrderController extends Controller
                     'price'=>$orderdet['price'][$key],
                     'payment'=>$orderdet['payment'],
                     'prname'=>$orderdet['prname'][$key],
-                    'total'=>$orderdet['sutotal'],
                 ];
                 // dd($data);
                 $new=new OrderDetail;
                 $new->insert($data);
             }
-
-
-
-
 
 
             $del=Cart::where('userid',auth()->user()->id)->delete();
@@ -101,12 +98,13 @@ class OrderController extends Controller
         // dd($data);
         return view('admin.orders.order',$data);
     }
-    public function edit($id)
+    public function edit()
     {
         $data=[];
-        $data['orderdetail']=order::with('prduct')->find($id);
-        // dd($data['orderdetail']->toArray());
-        // dd($data);
+        $idget=order::select('id')->where('userid',auth()->user()->id)->get();
+        $hell=$idget[0]['id'];
+        $data['orderdetail']=OrderDetail::where('orderid',$hell);
+        dd($data);
         return view('admin.orders.order-detail',$data);
     }
     public function update(UpdateorderRequest $request, order $order)

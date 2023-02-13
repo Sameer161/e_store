@@ -65,21 +65,35 @@
 						<th>Name</th>
 						<th>Address</th>
 						<th>Invoice</th>
-						<th>Quantity</th>
 						<th>Total Price</th>
 						<th>Paymant Method</th>
 					</tr>
 				</thead>
 				<tbody class="">
-					{{-- @dd($userorder) --}}
+					<tr>
+						<td>{{ $userorder['0']['orderdetail']['name'] }}</td>
+						<td>{{ $userorder['0']['orderdetail']['adress'] }}</td>
+						<td>{{ $userorder['0']['orderdetail']['invoice'] }}</td>
+						<td>{{ $userorder['0']['orderdetail']['total'] }}</td>
+						<td>{{ $userorder['0']['payment'] }}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<table class="table table-bordered">
+				<thead>
+					<tr class="">
+						<th>Product Name</th>
+						<th>Quantity</th>
+						<th>Price</th>
+					</tr>
+				</thead>
+				<tbody class="">
 					@foreach($userorder as $order)
 					<tr>
-						<td>{{ $order->name }}</td>
-						<td>{{ $order->adress }}</td>
-						<td>{{ $order->invoice }}</td>
+						<td>{{ $order->prname }}</td>
 						<td>{{ $order->quantity }}</td>
-						<td>{{ $order->total }}</td>
-						<td>{{ $order->payment }}</td>
+						<td>{{ $order->price }}</td>
 					</tr>
 					@endforeach()
 				</tbody>

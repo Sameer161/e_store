@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\order;
+use App\Models\OrderDetail;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
@@ -15,7 +16,8 @@ class UserPanelController extends Controller
         if (Auth::check())
         {   
             $data=[];
-            $data['userorder']=order::where('userid',auth()->user()->id)->get();
+            $data['userorder']=OrderDetail::with('orderdetail')->get();
+            // dd($data);
             return view('admin.user.user-order',$data);
         }
     }

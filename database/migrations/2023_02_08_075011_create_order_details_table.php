@@ -20,7 +20,6 @@ class CreateOrderDetailsTable extends Migration
             $table->string('prname');
             $table->integer('quantity');
             $table->integer('price');
-            $table->string('total');
             $table->string('payment');
             $table->timestamps();
         });

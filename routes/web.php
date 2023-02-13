@@ -63,7 +63,7 @@ Route::view('/userlogin','admin.user.login');
 
 //Admin Order
 Route::get('order-all',[App\Http\Controllers\OrderController::class,'show']);
-Route::get('order-detail/{id}',[App\Http\Controllers\OrderController::class,'edit']);
+Route::get('order-detail',[App\Http\Controllers\OrderController::class,'edit']);
 
 //User Admin Panel
 Route::view('userinfo','admin.user.user-main');

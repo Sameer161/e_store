@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('city');
             $table->integer('postal');
             $table->integer('invoice');
+            $table->string('total');
             $table->timestamps();
         });
     }

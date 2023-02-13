@@ -14,6 +14,8 @@
 								<th>Emial</th>
 								<th>Address</th>
 								<th>City</th>
+								<th>Invoice</th>
+								<th>Total</th>
 								<th>Detail</th>
 							</tr>
 						</thead>
@@ -27,10 +29,12 @@
 								<td>{{ $view->email }}</td>
 								<td>{{ $view->adress }}</td>
 								<td>{{ $view->city }}</td>
+								<td>{{ $view->invoice }}</td>
+								<td>{{ $view->total }}</td>
 								<td>
 									{{-- <a class="" href="{{ url('deletecategories/'.$view->id)}}"><i class="fa fa-trash" aria-hidden="true"></i></a> --}}
 									{{-- <a class="" href="{{ url('updatecategories/'.$view->id) }}"><i class="fa fa-edit" aria-hidden="true"></i></a> --}}
-									<a href="{{ url('order-detail/'.$view->id) }}" class="btn btn-primary">Order Detail</a>
+									<a href="{{ url('order-detail') }}" class="btn btn-primary">Order Detail</a>
 								</td>
 							</tr>
 							@endforeach()

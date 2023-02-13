@@ -14,6 +14,6 @@ class order extends Model
         return $this->hasMany(Product::class,'id','prid');
     }
     protected $fillable = [
-        'name','userid','phone','adress','email','city','postal','invoice',
+        'name','userid','phone','adress','email','city','postal','invoice','total',
     ];
 }
