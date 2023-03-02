@@ -74,7 +74,7 @@ class OrderController extends Controller
                 'title' => 'Mail from Hexashop',
                 'body' =>  $mai,
             ];
-            // Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
+            Mail::to(auth()->user()->email)->send(new \App\Mail\MyTestMail($details));
             Mail::to('sameerdeveloper90@gmail.com')->send(new \App\Mail\MyTestMail($details));
             return redirect('orderget');
 
@@ -101,12 +101,12 @@ class OrderController extends Controller
     public function edit()
     {
         $data=[];
-        $idget=order::select('id')->where('userid',auth()->user()->id)->get();
-        $hell=$idget[0]['id'];
+        // $idget=order::select('id')->where('userid',auth()->user()->id)->get();
+        // $hell=$idget[0]['id'];
         // dd($hell);
-        $data['orderdetail']=OrderDetail::where('orderid',$hell);
+        // $data['orderdetail']=OrderDetail::where('orderid',$hell);
         $data['orderdetail']=OrderDetail::all();
-        dd($data);
+        // dd($data);
         return view('admin.orders.order-detail',$data);
     }
     public function update(UpdateorderRequest $request, order $order)
